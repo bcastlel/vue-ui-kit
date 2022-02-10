@@ -72,11 +72,16 @@ module.exports = {
 
     /* https://eslint.vuejs.org/rules/#extension-rules */
     'vue/eqeqeq': 'error',
-
-
-    /* https://www.npmjs.com/package/@typescript-eslint/eslint-plugin */
-    '@typescript-eslint/explicit-function-return-type': 'error',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-inferrable-types': 'off',
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx', '*.vue'],
+      rules: {
+        /* https://www.npmjs.com/package/@typescript-eslint/eslint-plugin */
+        '@typescript-eslint/explicit-function-return-type': 'error',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-inferrable-types': 'off',
+      },
+    },
+  ],
 };
