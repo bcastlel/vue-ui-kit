@@ -1,5 +1,17 @@
+@import '@/styles/vars';
+
 .app {
   padding: 5%;
   font-family: 'Roboto', Helvetica, sans-serif;
   color: #333;
+}
+
+a {
+  color: $primary;
+  transition: color .1s;
+
+  &:hover,
+  &:focus-visible {
+    color: darken($primary, 20%);
+  }
 }
