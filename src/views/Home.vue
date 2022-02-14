@@ -19,10 +19,11 @@
 import Vue from 'vue';
 import AppCheckbox from '@/components/AppCheckbox.vue';
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
+import { CheckboxChecked } from '@/models/checkbox';
 import { BreadcrumbsItem } from '@/models/breadcrumbs';
 
 interface Data {
-  checked: boolean;
+  checked: CheckboxChecked;
   indeterminate: boolean;
   breadcrumbs: BreadcrumbsItem[];
 }
