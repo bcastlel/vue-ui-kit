@@ -15,13 +15,19 @@
 <script lang="ts">
 import Vue from 'vue';
 import AppCheckbox from '@/components/AppCheckbox.vue';
+import { CheckboxChecked } from '@/models/checkbox';
+
+interface Data {
+  checked: CheckboxChecked;
+  indeterminate: boolean;
+}
 
 export default Vue.extend({
   name: 'Home',
   components: {
     AppCheckbox,
   },
-  data() {
+  data(): Data {
     return {
       checked: false,
       indeterminate: true,

@@ -2,7 +2,6 @@
   <label
     class="checkbox"
     :class="{
-      'checkbox_checked': isChecked,
       'checkbox_disabled': disabled,
       'checkbox_indeterminate': localIndeterminate,
     }"
@@ -20,8 +19,7 @@
     </span>
 
     <span v-if="$slots.default || label" class="checkbox__label">
-      <slot v-if="$slots.default" />
-      <template v-else>{{ label }}</template>
+      <slot>{{ label }}</slot>
     </span>
   </label>
 </template>
@@ -30,8 +28,7 @@
 import Vue, { PropType } from 'vue';
 import CheckIcon from '@/assets/check.svg';
 import MinusIcon from '@/assets/minus.svg';
-
-type Value = string | number;
+import { CheckboxValue, CheckboxChecked } from '@/models/checkbox';
 
 export default Vue.extend({
   name: 'AppCheckbox',
@@ -45,20 +42,21 @@ export default Vue.extend({
   },
   props: {
     checked: {
-      type: [Boolean, Array] as PropType<boolean | Value[]>,
+      type: [Boolean, Array] as PropType<CheckboxChecked>,
       required: true,
     },
     label: { type: String, default: '' },
-    value: { type: [String, Number], default: '' },
+    // eslint-disable-next-line vue/require-default-prop
+    value: { type: null as CheckboxValue },
     disabled: { type: Boolean, default: false },
     indeterminate: { type: Boolean, default: false },
   },
   computed: {
     localChecked: {
-      get(): boolean | Value[] {
+      get(): CheckboxChecked {
         return this.checked;
       },
-      set(checked: boolean | Value[]) {
+      set(checked: CheckboxChecked) {
         this.$emit('change', checked);
       },
     },
@@ -69,13 +67,6 @@ export default Vue.extend({
       set(indeterminate: boolean) {
         this.$emit('update:indeterminate', indeterminate);
       },
-    },
-    isChecked(): boolean {
-      if (Array.isArray(this.localChecked)) {
-        return this.localChecked.includes(this.value);
-      }
-
-      return this.localChecked;
     },
   },
   watch: {
@@ -101,44 +92,13 @@ export default Vue.extend({
 
   &:hover,
   &:focus-within {
-    &:not(#{$root}_checked):not(#{$root}_indeterminate) #{$root}__control {
-      border-color: $primary;
-    }
-  }
-
-  &_checked {
     #{$root}__control {
       border-color: $primary;
-      background-color: $primary;
-
-      &-icon {
-        opacity: 0;
-
-        &_checked {
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  &_indeterminate {
-    #{$root}__control {
-      border-color: $mono;
-      background-color: $mono;
-
-      &-icon {
-        opacity: 0;
-
-        &_indeterminate {
-          opacity: 1;
-        }
-      }
     }
   }
 
   &_disabled {
     opacity: 0.5;
-    cursor: default;
     pointer-events: none;
   }
 
@@ -146,6 +106,19 @@ export default Vue.extend({
     position: absolute;
     z-index: -1;
     opacity: 0;
+
+    &:checked + #{$root}__control {
+      border-color: $primary;
+      background-color: $primary;
+
+      #{$root}__control-icon {
+        opacity: 0;
+
+        &_checked {
+          opacity: 1;
+        }
+      }
+    }
   }
 
   &__control {
@@ -172,6 +145,21 @@ export default Vue.extend({
 
   &__label {
     margin-left: 10px;
+  }
+
+  &_indeterminate {
+    #{$root}__input + #{$root}__control {
+      border-color: $mono;
+      background-color: $mono;
+
+      #{$root}__control-icon {
+        opacity: 0;
+
+        &_indeterminate {
+          opacity: 1;
+        }
+      }
+    }
   }
 }
 </style>
