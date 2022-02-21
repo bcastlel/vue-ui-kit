@@ -11,15 +11,21 @@
       :indeterminate.sync="indeterminate"
     />
 
-    <app-breadcrumbs :items="breadcrumbs" />
+    <app-breadcrumbs class="home__breadcrumbs" :items="breadcrumbs" />
+
+    <div class="home__aspect-ratio aspect-ratio">
+      <div class="home__aspect-ratio-content aspect-ratio__content">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem dolore neque fuga qui placeat nulla cupiditate iste? In ducimus fuga, quos non nesciunt reiciendis placeat excepturi? Reprehenderit dolorum voluptas ut.
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import AppCheckbox from '@/components/AppCheckbox.vue';
-import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import { CheckboxChecked } from '@/models/checkbox';
+import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import { BreadcrumbsItem } from '@/models/breadcrumbs';
 
 interface Data {
@@ -56,6 +62,24 @@ export default Vue.extend({
 
   &__checkbox {
     margin-bottom: 18px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 18px;
+  }
+
+  &__aspect-ratio {
+    border: 1px solid #ECECEC;
+    padding: 16px;
+    width: 256px;
+
+    &::before {
+      padding-bottom: 100%; // ratio
+    }
+
+    &-content {
+      line-height: normal;
+    }
   }
 }
 </style>

@@ -1,0 +1,26 @@
+$default-aspect-ratio: 16 / 9;
+
+.aspect-ratio {
+  display: flex;
+  overflow: hidden;
+
+  &,
+  &__content {
+    max-width: 100%;
+  }
+
+  &::before,
+  &__content {
+    flex: 1 0 0;
+  }
+
+  // sizer
+  &::before {
+    content: "";
+    padding-bottom: percentage(1 / $default-aspect-ratio);
+  }
+
+  &__content {
+    margin-left: -100%;
+  }
+}
