@@ -18,6 +18,49 @@
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem dolore neque fuga qui placeat nulla cupiditate iste? In ducimus fuga, quos non nesciunt reiciendis placeat excepturi? Reprehenderit dolorum voluptas ut.
       </div>
     </div>
+
+    <div class="home__button-list">
+      <app-button
+        class="home__button"
+        icon-only
+        size="small"
+      >
+        <template #icon>
+          <check-icon />
+        </template>
+      </app-button>
+
+      <app-button
+        class="home__button"
+        design="secondary"
+        disabled
+      >
+        <template #icon>
+          <minus-icon />
+        </template>
+        My Button
+      </app-button>
+
+      <app-button
+        class="home__button"
+        size="large"
+        reversed
+        :loading="buttonLoading"
+      >
+        <template #icon>
+          <minus-icon />
+        </template>
+        My Button
+      </app-button>
+
+      <app-button
+        class="home__button"
+        design="tertiary"
+        size="small"
+      >
+        My Button
+      </app-button>
+    </div>
   </div>
 </template>
 
@@ -27,11 +70,15 @@ import AppCheckbox from '@/components/AppCheckbox.vue';
 import { CheckboxChecked } from '@/models/checkbox';
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import { BreadcrumbsItem } from '@/models/breadcrumbs';
+import AppButton from '@/components/AppButton.vue';
+import CheckIcon from '@/assets/check.svg';
+import MinusIcon from '@/assets/minus.svg';
 
 interface Data {
   checked: CheckboxChecked;
   indeterminate: boolean;
   breadcrumbs: BreadcrumbsItem[];
+  buttonLoading: boolean;
 }
 
 export default Vue.extend({
@@ -39,6 +86,9 @@ export default Vue.extend({
   components: {
     AppCheckbox,
     AppBreadcrumbs,
+    AppButton,
+    CheckIcon,
+    MinusIcon,
   },
   data(): Data {
     return {
@@ -49,7 +99,11 @@ export default Vue.extend({
         { text: 'link 2', to: '/link2' },
         { text: 'link 3', to: '/link3' },
       ],
+      buttonLoading: true,
     };
+  },
+  mounted() {
+    setTimeout(() => this.buttonLoading = false, 2000);
   },
 });
 </script>
@@ -69,6 +123,7 @@ export default Vue.extend({
   }
 
   &__aspect-ratio {
+    margin-bottom: 24px;
     border: 1px solid #ECECEC;
     padding: 16px;
     width: 256px;
@@ -79,6 +134,17 @@ export default Vue.extend({
 
     &-content {
       line-height: normal;
+    }
+  }
+
+  &__button {
+    &-list {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    &:not(:last-child) {
+      margin-right: 15px;
     }
   }
 }
