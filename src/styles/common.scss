@@ -13,6 +13,6 @@ a {
 
   &:hover,
   &:focus-visible {
-    color: darken($primary, 20%);
+    color: $primary-darker;
   }
 }
