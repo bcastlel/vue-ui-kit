@@ -129,7 +129,7 @@ export default Vue.extend({
     flex-shrink: 0;
     position: relative;
     transition-property: background-color, border-color;
-    transition-duration: .2s;
+    transition-duration: 0.2s;
 
     &-icon {
       position: absolute;
@@ -139,7 +139,7 @@ export default Vue.extend({
       bottom: 0;
       opacity: 0;
       fill: white;
-      transition: opacity .2s;
+      transition: opacity 0.2s;
     }
   }
 

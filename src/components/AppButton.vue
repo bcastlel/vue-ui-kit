@@ -55,7 +55,6 @@ $heights: (
   border: 1px solid $primary;
   padding: 0.425em 0.9125em;
   min-height: map-get($heights, 'medium');
-  line-height: normal;
   color: white;
   background-color: $primary;
   user-select: none;
@@ -65,9 +64,9 @@ $heights: (
   position: relative;
   overflow: hidden;
   transition:
-    border-color .2s,
-    color .1s,
-    background-color .2s;
+    border-color 0.2s,
+    color 0.1s,
+    background-color 0.2s;
 
   $root: &;
 
@@ -160,7 +159,7 @@ $heights: (
   }
 
   &[disabled] {
-    opacity: .5;
+    opacity: 0.5;
     pointer-events: none;
   }
 
@@ -177,7 +176,7 @@ $heights: (
       width: 100%;
       height: 100%;
       fill: white;
-      transition: fill .1s;
+      transition: fill 0.1s;
     }
   }
 
