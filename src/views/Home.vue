@@ -57,10 +57,20 @@
         class="home__button"
         design="tertiary"
         size="small"
+        @click.native="modalVisible = true"
       >
-        My Button
+        Open Modal
       </app-button>
     </div>
+
+    <app-modal
+      v-if="modalVisible"
+      content-class="home__modal"
+      transition="scale"
+      @close="modalVisible = false"
+    >
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis velit laudantium sint omnis temporibus assumenda inventore qui veniam ducimus, quas totam officia! Sunt totam cupiditate ipsam nobis natus sint voluptate fuga dicta, voluptatem laborum provident exercitationem fugit libero explicabo itaque asperiores nulla incidunt quisquam labore. Odio temporibus quasi earum nisi.
+    </app-modal>
   </div>
 </template>
 
@@ -71,6 +81,7 @@ import { CheckboxChecked } from '@/models/checkbox';
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import { BreadcrumbsItem } from '@/models/breadcrumbs';
 import AppButton from '@/components/AppButton.vue';
+import AppModal from '@/components/AppModal.vue';
 import CheckIcon from '@/assets/check.svg';
 import MinusIcon from '@/assets/minus.svg';
 
@@ -79,6 +90,7 @@ interface Data {
   indeterminate: boolean;
   breadcrumbs: BreadcrumbsItem[];
   buttonLoading: boolean;
+  modalVisible: boolean;
 }
 
 export default Vue.extend({
@@ -89,6 +101,7 @@ export default Vue.extend({
     AppButton,
     CheckIcon,
     MinusIcon,
+    AppModal,
   },
   data(): Data {
     return {
@@ -100,6 +113,7 @@ export default Vue.extend({
         { text: 'link 3', to: '/link3' },
       ],
       buttonLoading: true,
+      modalVisible: false,
     };
   },
   mounted() {
@@ -130,10 +144,6 @@ export default Vue.extend({
 
     &::before {
       padding-bottom: 100%; // ratio
-    }
-
-    &-content {
-      line-height: normal;
     }
   }
 
