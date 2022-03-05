@@ -6,7 +6,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:vue/recommended',
-    '@vue/typescript/recommended',
   ],
   rules: {
     /* https://eslint.org/docs/rules/#possible-problems */
@@ -58,6 +57,7 @@ module.exports = {
 
 
     /* https://eslint.vuejs.org/rules/#priority-b-strongly-recommended-improving-readability-for-vue-js-2-x */
+    'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     'vue/max-attributes-per-line': ['error', {
       singleline: 2,
       multiline: 1,
@@ -76,6 +76,7 @@ module.exports = {
   overrides: [
     {
       files: ['*.ts', '*.tsx', '*.vue'],
+      extends: ['@vue/typescript/recommended'],
       rules: {
         /* https://www.npmjs.com/package/@typescript-eslint/eslint-plugin */
         '@typescript-eslint/explicit-function-return-type': 'error',
