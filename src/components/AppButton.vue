@@ -102,14 +102,6 @@ $heights: (
         border-color: $primary-darker;
         color: $primary-darker;
         background-color: transparent;
-
-        #{$root}__icon svg {
-          fill: $primary-darker;
-        }
-      }
-
-      #{$root}__icon svg {
-        fill: $primary;
       }
 
       #{$root}__loader {
@@ -175,8 +167,7 @@ $heights: (
     svg {
       width: 100%;
       height: 100%;
-      fill: white;
-      transition: fill 0.1s;
+      fill: currentColor;
     }
   }
 
