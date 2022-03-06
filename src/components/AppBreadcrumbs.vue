@@ -69,7 +69,7 @@ export default Vue.extend({
       width: 16px;
       height: 16px;
       vertical-align: middle;
-      fill: $mono;
+      fill: currentColor;
     }
   }
 }

@@ -63,6 +63,13 @@
       </app-button>
     </div>
 
+    <expansion-panel class="home__expansion-panel">
+      <template #caption="{ contentVisible }">
+        {{ contentVisible ? 'Collapse content' : 'Expand content' }}
+      </template>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis id asperiores, porro nobis doloremque expedita sed atque ab excepturi architecto, optio eligendi nihil ratione repellendus impedit recusandae ut adipisci sint?
+    </expansion-panel>
+
     <app-modal
       v-if="modalVisible"
       content-class="home__modal"
@@ -82,6 +89,7 @@ import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import { BreadcrumbsItem } from '@/models/breadcrumbs';
 import AppButton from '@/components/AppButton.vue';
 import AppModal from '@/components/AppModal.vue';
+import ExpansionPanel from '@/components/ExpansionPanel.vue';
 import CheckIcon from '@/assets/check.svg';
 import MinusIcon from '@/assets/minus.svg';
 
@@ -99,9 +107,10 @@ export default Vue.extend({
     AppCheckbox,
     AppBreadcrumbs,
     AppButton,
+    AppModal,
+    ExpansionPanel,
     CheckIcon,
     MinusIcon,
-    AppModal,
   },
   data(): Data {
     return {
@@ -149,6 +158,7 @@ export default Vue.extend({
 
   &__button {
     &-list {
+      margin-bottom: 24px;
       display: flex;
       align-items: flex-end;
     }
@@ -156,6 +166,10 @@ export default Vue.extend({
     &:not(:last-child) {
       margin-right: 15px;
     }
+  }
+
+  &__expansion-panel {
+    width: 256px;
   }
 }
 </style>

@@ -85,9 +85,16 @@ input::-ms-clear {
   display: none;
 }
 
+button,
+[type='button'],
+[type='reset'],
+[type='submit'],
+[role='button'] {
+  cursor: pointer;
+}
+
 button {
   background-color: transparent;
-  cursor: pointer;
 }
 
 [disabled] {
