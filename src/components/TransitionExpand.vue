@@ -4,7 +4,7 @@ import Vue from 'vue';
 export default Vue.extend({
   name: 'TransitionExpand',
   functional: true,
-  render(createElement, context) {
+  render(h, context) {
     const data = {
       props: {
         ...context.props,
@@ -46,7 +46,7 @@ export default Vue.extend({
       },
     };
 
-    return createElement('transition', data, context.children);
+    return h('transition', data, context.children);
   },
 });
 </script>

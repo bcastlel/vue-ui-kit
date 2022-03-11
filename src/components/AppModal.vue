@@ -47,11 +47,11 @@ import CloseIcon from '@/assets/close.svg';
 import { getFocusableElement } from '@/utils/get-focusable-element';
 import { ComponentOptionsWithScopeId, ComponentScopeAttrs } from '@/models/common';
 
+const CLASS_NAME = 'modal';
+
 interface Data {
   visible: boolean;
 }
-
-const CLASS_NAME = 'modal';
 
 export default Vue.extend({
   name: 'AppModal',
