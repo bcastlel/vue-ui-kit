@@ -29,8 +29,10 @@
 import Vue, { PropType } from 'vue';
 import ProgressCircular from '@/components/ProgressCircular.vue';
 
-type Design = 'primary' | 'secondary' | 'tertiary';
-type Size = 'small' | 'medium' | 'large';
+const DESIGNS = ['primary', 'secondary', 'tertiary'] as const;
+type Design = typeof DESIGNS[number];
+const SIZES = ['small', 'medium', 'large'] as const;
+type Size = typeof SIZES[number];
 
 export default Vue.extend({
   name: 'AppButton',
@@ -38,8 +40,16 @@ export default Vue.extend({
     ProgressCircular,
   },
   props: {
-    design: { type: String as PropType<Design>, default: 'primary' },
-    size: { type: String as PropType<Size>, default: 'medium' },
+    design: {
+      type: String as PropType<Design>,
+      validator: (value: Design) => DESIGNS.includes(value),
+      default: 'primary',
+    },
+    size: {
+      type: String as PropType<Size>,
+      validator: (value: Size): boolean => SIZES.includes(value),
+      default: 'medium',
+    },
     reversed: { type: Boolean, default: false },
     iconOnly: { type: Boolean, default: false },
     loading: { type: Boolean, default: false },
