@@ -70,6 +70,10 @@
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis id asperiores, porro nobis doloremque expedita sed atque ab excepturi architecto, optio eligendi nihil ratione repellendus impedit recusandae ut adipisci sint?
     </expansion-panel>
 
+    <progress-circular :value="progressValue">
+      {{ progressValue }}
+    </progress-circular>
+
     <app-modal
       v-if="modalVisible"
       content-class="home__modal"
@@ -90,6 +94,7 @@ import { BreadcrumbsItem } from '@/models/breadcrumbs';
 import AppButton from '@/components/AppButton.vue';
 import AppModal from '@/components/AppModal.vue';
 import ExpansionPanel from '@/components/ExpansionPanel.vue';
+import ProgressCircular from '@/components/ProgressCircular.vue';
 import CheckIcon from '@/assets/check.svg';
 import MinusIcon from '@/assets/minus.svg';
 
@@ -99,6 +104,8 @@ interface Data {
   breadcrumbs: BreadcrumbsItem[];
   buttonLoading: boolean;
   modalVisible: boolean;
+  progressValue: number;
+  progressInterval: number | null;
 }
 
 export default Vue.extend({
@@ -109,6 +116,7 @@ export default Vue.extend({
     AppButton,
     AppModal,
     ExpansionPanel,
+    ProgressCircular,
     CheckIcon,
     MinusIcon,
   },
@@ -123,10 +131,24 @@ export default Vue.extend({
       ],
       buttonLoading: true,
       modalVisible: false,
+      progressValue: 0,
+      progressInterval: null,
     };
   },
   mounted() {
-    setTimeout(() => this.buttonLoading = false, 2000);
+    setTimeout(() => this.buttonLoading = false, 5000);
+
+    this.progressInterval = setInterval(() => {
+      if (this.progressValue === 100) {
+        this.progressValue = 0;
+        return;
+      }
+
+      this.progressValue += 10;
+    }, 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.progressInterval!);
   },
 });
 </script>
@@ -169,6 +191,7 @@ export default Vue.extend({
   }
 
   &__expansion-panel {
+    margin-bottom: 24px;
     width: 256px;
   }
 }

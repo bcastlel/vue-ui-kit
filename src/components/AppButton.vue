@@ -19,18 +19,24 @@
       <slot />
     </span>
 
-    <span v-if="loading" class="button__loader">...</span>
+    <span v-if="loading" class="button__loader">
+      <progress-circular class="button__loader-progress" indeterminate />
+    </span>
   </button>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue';
+import ProgressCircular from '@/components/ProgressCircular.vue';
 
 type Design = 'primary' | 'secondary' | 'tertiary';
 type Size = 'small' | 'medium' | 'large';
 
 export default Vue.extend({
   name: 'AppButton',
+  components: {
+    ProgressCircular,
+  },
   props: {
     design: { type: String as PropType<Design>, default: 'primary' },
     size: { type: String as PropType<Size>, default: 'medium' },
@@ -182,6 +188,12 @@ $heights: (
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &-progress {
+      width: calc(1em + 4px);
+      height: calc(1em + 4px);
+      color: currentColor;
+    }
   }
 }
 </style>
