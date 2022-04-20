@@ -20,14 +20,14 @@
     </span>
 
     <span v-if="loading" class="button__loader">
-      <progress-circular class="button__loader-progress" indeterminate />
+      <a-progress-circular class="button__loader-progress" indeterminate />
     </span>
   </button>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue';
-import ProgressCircular from '@/components/ProgressCircular.vue';
+import AProgressCircular from '@/components/AProgressCircular.vue';
 
 const DESIGNS = ['primary', 'secondary', 'tertiary'] as const;
 type Design = typeof DESIGNS[number];
@@ -35,9 +35,9 @@ const SIZES = ['small', 'medium', 'large'] as const;
 type Size = typeof SIZES[number];
 
 export default Vue.extend({
-  name: 'AppButton',
+  name: 'AButton',
   components: {
-    ProgressCircular,
+    AProgressCircular,
   },
   props: {
     design: {
@@ -50,9 +50,9 @@ export default Vue.extend({
       validator: (value: Size): boolean => SIZES.includes(value),
       default: 'medium',
     },
-    reversed: { type: Boolean, default: false },
-    iconOnly: { type: Boolean, default: false },
-    loading: { type: Boolean, default: false },
+    reversed: { type: Boolean },
+    iconOnly: { type: Boolean },
+    loading: { type: Boolean },
   },
 });
 </script>
@@ -68,11 +68,11 @@ $heights: (
 
 .button {
   border-radius: 4px;
-  border: 1px solid $primary;
+  border: 1px solid $secondary;
   padding: 0.425em 0.9125em;
   min-height: map-get($heights, 'medium');
   color: white;
-  background-color: $primary;
+  background-color: $secondary;
   user-select: none;
   display: inline-flex;
   justify-content: center;
@@ -88,8 +88,8 @@ $heights: (
 
   &:hover,
   &:focus-visible {
-    border-color: $primary-darker;
-    background-color: $primary-darker;
+    border-color: $secondary-darker;
+    background-color: $secondary-darker;
   }
 
   &_design {
@@ -109,19 +109,20 @@ $heights: (
     }
 
     &_tertiary {
-      border-color: $primary;
-      color: $primary;
+      border-color: $mono;
+      color: $mono;
       background-color: transparent;
 
       &:hover,
       &:focus-visible {
-        border-color: $primary-darker;
-        color: $primary-darker;
+        border-color: $mono-darker;
+        color: $mono-darker;
         background-color: transparent;
       }
 
       #{$root}__loader {
         margin: 1px;
+        color: $mono;
       }
     }
   }
@@ -181,8 +182,6 @@ $heights: (
     }
 
     svg {
-      width: 100%;
-      height: 100%;
       fill: currentColor;
     }
   }
@@ -193,7 +192,7 @@ $heights: (
     left: 0;
     right: 0;
     bottom: 0;
-    color: $primary;
+    color: $secondary;
     background-color: white;
     display: flex;
     justify-content: center;

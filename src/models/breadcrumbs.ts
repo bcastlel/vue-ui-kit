@@ -1,6 +1,6 @@
-import { Location } from 'vue-router';
+import { RawLocation } from 'vue-router';
 
 export interface BreadcrumbsItem {
   text: string;
-  to: string | Location;
+  to: RawLocation;
 }

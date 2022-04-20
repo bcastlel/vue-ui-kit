@@ -28,7 +28,7 @@ import Vue, { PropType } from 'vue';
 import { BreadcrumbsItem } from '@/models/breadcrumbs';
 
 export default Vue.extend({
-  name: 'AppBreadcrumbs',
+  name: 'ABreadcrumbs',
   props: {
     items: { type: Array as PropType<BreadcrumbsItem[]>, required: true },
     divider: { type: String, default: '/' },

@@ -13,7 +13,7 @@ const StrokeWidth = {
 } as const;
 
 export default Vue.extend({
-  name: 'ProgressCircular',
+  name: 'AProgressCircular',
   props: {
     value: {
       type: Number,
@@ -25,7 +25,7 @@ export default Vue.extend({
       validator: (value: Thickness): boolean => THICKNESSES.includes(value),
       default: 'normal',
     },
-    indeterminate: { type: Boolean, default: false },
+    indeterminate: { type: Boolean },
   },
   computed: {
     normalizedValue(): number {

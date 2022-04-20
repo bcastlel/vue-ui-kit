@@ -22,37 +22,37 @@
 
             <ul class="components__item-list">
               <li class="components__item">
-                <router-link :to="{ name: 'ComponentPage' }">
+                <router-link :to="{ name: 'breadcrumbs' }">
                   Breadcrumbs
                 </router-link>
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'ComponentPage' }">
+                <router-link :to="{ name: 'button' }">
                   Button
                 </router-link>
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'ComponentPage' }">
+                <router-link :to="{ name: 'breadcrumbs' }">
                   Checkbox
                 </router-link>
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'ComponentPage' }">
+                <router-link :to="{ name: 'breadcrumbs' }">
                   Modal
                 </router-link>
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'ComponentPage' }">
+                <router-link :to="{ name: 'breadcrumbs' }">
                   Expansion Panel
                 </router-link>
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'ComponentPage' }">
+                <router-link :to="{ name: 'breadcrumbs' }">
                   Progress Circular
                 </router-link>
               </li>
@@ -66,13 +66,13 @@
 
             <ul class="components__item-list">
               <li class="components__item">
-                <router-link :to="{ name: 'ComponentPage' }">
+                <router-link :to="{ name: 'breadcrumbs' }">
                   Container
                 </router-link>
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'ComponentPage' }">
+                <router-link :to="{ name: 'breadcrumbs' }">
                   Aspect Ratio
                 </router-link>
               </li>
@@ -101,7 +101,7 @@ export default Vue.extend({
 
 .intro {
   padding: 100px 0 50px;
-  background-color: lighten($secondary, 45%);
+  background-color: $secondary-lightest;
 
   @media (max-width: $s-breakpoint) {
     padding-top: 65px;

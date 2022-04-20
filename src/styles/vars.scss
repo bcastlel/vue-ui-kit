@@ -4,6 +4,8 @@ $secondary: #3aa575;
 $mono: #646464;
 
 $secondary-darker: darken($secondary, 15%);
+$secondary-lightest: lighten($secondary, 45%);
+$mono-darker: darken($mono, 15%);
 $mono-lighter: lighten($mono, 15%);
 
 /* Breakpoints */

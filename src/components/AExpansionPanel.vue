@@ -40,14 +40,14 @@ interface Data {
 }
 
 export default Vue.extend({
-  name: 'ExpansionPanel',
+  name: 'AExpansionPanel',
   components: {
     TransitionExpand,
     ChevronDownIcon,
   },
   props: {
-    initiallyExpanded: { type: Boolean, default: false },
-    headerBlock: { type: Boolean, default: false },
+    initiallyExpanded: { type: Boolean },
+    headerBlock: { type: Boolean },
   },
   data(): Data {
     return {

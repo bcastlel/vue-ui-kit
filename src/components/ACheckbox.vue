@@ -31,7 +31,7 @@ import MinusIcon from '@/assets/minus.svg';
 import { CheckboxValue, CheckboxChecked } from '@/models/checkbox';
 
 export default Vue.extend({
-  name: 'AppCheckbox',
+  name: 'ACheckbox',
   components: {
     CheckIcon,
     MinusIcon,
@@ -48,8 +48,8 @@ export default Vue.extend({
     label: { type: String, default: '' },
     // eslint-disable-next-line vue/require-default-prop
     value: { type: null as CheckboxValue },
-    disabled: { type: Boolean, default: false },
-    indeterminate: { type: Boolean, default: false },
+    disabled: { type: Boolean },
+    indeterminate: { type: Boolean },
   },
   computed: {
     localChecked: {
