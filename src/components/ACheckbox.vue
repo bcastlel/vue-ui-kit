@@ -43,7 +43,7 @@ export default Vue.extend({
   props: {
     checked: {
       type: [Boolean, Array] as PropType<CheckboxChecked>,
-      required: true,
+      default: false,
     },
     label: { type: String, default: '' },
     // eslint-disable-next-line vue/require-default-prop
@@ -93,7 +93,7 @@ export default Vue.extend({
   &:hover,
   &:focus-within {
     #{$root}__control {
-      border-color: $primary;
+      border-color: $secondary;
     }
   }
 
@@ -108,8 +108,8 @@ export default Vue.extend({
     opacity: 0;
 
     &:checked + #{$root}__control {
-      border-color: $primary;
-      background-color: $primary;
+      border-color: $secondary;
+      background-color: $secondary;
 
       #{$root}__control-icon {
         opacity: 0;

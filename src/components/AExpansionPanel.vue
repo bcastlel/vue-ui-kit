@@ -66,12 +66,6 @@ export default Vue.extend({
 @import '@/styles/vars';
 
 .expansion-panel {
-  $root: &;
-
-  &_content-visible #{$root}__icon {
-    transform: rotate(-180deg);
-  }
-
   &__header {
     user-select: none;
     display: inline-flex;
@@ -108,6 +102,10 @@ export default Vue.extend({
 
   &__content {
     padding-top: 6px;
+  }
+
+  &_content-visible &__icon {
+    transform: rotate(-180deg);
   }
 }
 </style>

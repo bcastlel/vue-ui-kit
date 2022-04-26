@@ -34,7 +34,7 @@
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'breadcrumbs' }">
+                <router-link :to="{ name: 'checkbox' }">
                   Checkbox
                 </router-link>
               </li>

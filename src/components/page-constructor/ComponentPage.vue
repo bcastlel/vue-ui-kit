@@ -14,7 +14,10 @@
       </div>
     </div>
 
-    <div class="content">
+    <div
+      class="content"
+      :class="{ 'content_enlarged-example-gap': enlargedExampleGap }"
+    >
       <div class="container">
         <component-usage-example caption="Basic usage">
           <slot name="basicUsage" />
@@ -39,6 +42,7 @@ export default Vue.extend({
   },
   props: {
     title: { type: String, required: true },
+    enlargedExampleGap: { type: Boolean },
   },
 });
 </script>
@@ -87,6 +91,17 @@ export default Vue.extend({
 
 .content {
   padding: 45px 0 65px;
+
+  &_enlarged-example-gap .component-usage-example {
+    ::v-deep .component-usage-example__content {
+      margin-bottom: -20px;
+
+      > * {
+        margin-right: 25px;
+        margin-bottom: 20px;
+      }
+    }
+  }
 
   .component-usage-example:not(:last-child) {
     margin-bottom: 45px;

@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Breadcrumbs from '@/views/Breadcrumbs.vue';
 import Button from '@/views/Button.vue';
+import Checkbox from '@/views/Checkbox.vue';
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes: Array<RouteConfig> = [
     path: '/button',
     name: 'button',
     component: Button,
+  },
+  {
+    path: '/checkbox',
+    name: 'checkbox',
+    component: Checkbox,
   },
 ];
 

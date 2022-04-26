@@ -32,14 +32,14 @@ export default Vue.extend({
 
   &__content {
     margin-right: -15px;
-    margin-bottom: -15px;
+    margin-bottom: -17px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
 
     > * {
-      margin-right: 15px;
-      margin-bottom: 15px;
+      margin-right: 17px;
+      margin-bottom: 17px;
     }
   }
 }
