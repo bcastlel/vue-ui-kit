@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue';
 import Breadcrumbs from '@/views/Breadcrumbs.vue';
 import Button from '@/views/Button.vue';
 import Checkbox from '@/views/Checkbox.vue';
+import Modal from '@/views/Modal.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes: Array<RouteConfig> = [
     path: '/checkbox',
     name: 'checkbox',
     component: Checkbox,
+  },
+  {
+    path: '/modal',
+    name: 'modal',
+    component: Modal,
   },
 ];
 

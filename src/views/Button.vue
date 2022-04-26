@@ -1,87 +1,87 @@
 <template>
   <component-page title="Button">
     <template #basicUsage>
-      <app-button>Button</app-button>
+      <a-button>Button</a-button>
     </template>
 
     <component-usage-example caption="Different designs">
-      <app-button>
+      <a-button>
         Primary
-      </app-button>
+      </a-button>
 
-      <app-button design="secondary">
+      <a-button design="secondary">
         Secondary
-      </app-button>
+      </a-button>
 
-      <app-button design="tertiary">
+      <a-button design="tertiary">
         Tertiary
-      </app-button>
+      </a-button>
     </component-usage-example>
 
     <component-usage-example caption="Disabled option">
-      <app-button disabled>
+      <a-button disabled>
         Primary
-      </app-button>
+      </a-button>
 
-      <app-button design="secondary" disabled>
+      <a-button design="secondary" disabled>
         Secondary
-      </app-button>
+      </a-button>
 
-      <app-button design="tertiary" disabled>
+      <a-button design="tertiary" disabled>
         Tertiary
-      </app-button>
+      </a-button>
     </component-usage-example>
 
     <component-usage-example caption="Different sizes">
-      <app-button size="small">
+      <a-button size="small">
         Small
-      </app-button>
+      </a-button>
 
-      <app-button>
+      <a-button>
         Medium
-      </app-button>
+      </a-button>
 
-      <app-button size="large">
+      <a-button size="large">
         Large
-      </app-button>
+      </a-button>
     </component-usage-example>
 
     <component-usage-example caption="Icon slot">
-      <app-button>
+      <a-button>
         <template #icon>
           <check-icon />
         </template>
         Button
-      </app-button>
+      </a-button>
 
-      <app-button reversed>
+      <a-button reversed>
         <template #icon>
           <check-icon />
         </template>
         Reversed
-      </app-button>
+      </a-button>
     </component-usage-example>
 
     <component-usage-example caption="Icon-only style">
-      <app-button icon-only>
+      <a-button icon-only>
         <template #icon>
           <check-icon />
         </template>
-      </app-button>
+      </a-button>
     </component-usage-example>
 
     <component-usage-example caption="Loading option">
-      <app-button loading>
+      <a-button loading>
         Primary
-      </app-button>
+      </a-button>
 
-      <app-button design="secondary" loading>
+      <a-button design="secondary" loading>
         Secondary
-      </app-button>
+      </a-button>
 
-      <app-button design="tertiary" loading>
+      <a-button design="tertiary" loading>
         Tertiary
-      </app-button>
+      </a-button>
     </component-usage-example>
   </component-page>
 </template>
@@ -90,7 +90,7 @@
 import Vue from 'vue';
 import ComponentPage from '@/components/page-constructor/ComponentPage.vue';
 import ComponentUsageExample from '@/components/page-constructor/ComponentUsageExample.vue';
-import AppButton from '@/components/AButton.vue';
+import AButton from '@/components/AButton.vue';
 import CheckIcon from '@/assets/check.svg';
 
 export default Vue.extend({
@@ -98,7 +98,7 @@ export default Vue.extend({
   components: {
     ComponentPage,
     ComponentUsageExample,
-    AppButton,
+    AButton,
     CheckIcon,
   },
 });

@@ -40,7 +40,7 @@
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'breadcrumbs' }">
+                <router-link :to="{ name: 'modal' }">
                   Modal
                 </router-link>
               </li>
