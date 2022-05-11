@@ -46,13 +46,13 @@
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'breadcrumbs' }">
+                <router-link :to="{ name: 'expansion-panel' }">
                   Expansion Panel
                 </router-link>
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'breadcrumbs' }">
+                <router-link :to="{ name: 'progress-circular' }">
                   Progress Circular
                 </router-link>
               </li>

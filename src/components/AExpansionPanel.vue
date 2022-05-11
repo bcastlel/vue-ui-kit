@@ -20,19 +20,19 @@
       </div>
     </div>
 
-    <transition-expand>
+    <a-transition-expand>
       <div v-show="contentVisible" class="expansion-panel__content-wrapper">
         <div class="expansion-panel__content">
           <slot />
         </div>
       </div>
-    </transition-expand>
+    </a-transition-expand>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import TransitionExpand from '@/components/TransitionExpand.vue';
+import ATransitionExpand from '@/components/ATransitionExpand.vue';
 import ChevronDownIcon from '@/assets/chevron-down.svg';
 
 interface Data {
@@ -42,7 +42,7 @@ interface Data {
 export default Vue.extend({
   name: 'AExpansionPanel',
   components: {
-    TransitionExpand,
+    ATransitionExpand,
     ChevronDownIcon,
   },
   props: {
@@ -71,7 +71,7 @@ export default Vue.extend({
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
-    transition: color 0.1s;
+    transition: color 0.15s;
 
     &_block {
       display: flex;
@@ -79,7 +79,7 @@ export default Vue.extend({
 
     &:hover,
     &:focus-visible {
-      color: $primary;
+      color: $secondary;
     }
   }
 

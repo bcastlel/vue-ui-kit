@@ -46,8 +46,7 @@ import ComponentPage from '@/components/page-constructor/ComponentPage.vue';
 import ComponentUsageExample from '@/components/page-constructor/ComponentUsageExample.vue';
 import AButton from '@/components/AButton.vue';
 import AModal from '@/components/AModal.vue';
-
-const LOREM_IPSUM = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis velit laudantium sint omnis temporibus assumenda inventore qui veniam ducimus, quas totam officia! Sunt totam cupiditate ipsam nobis natus sint voluptate fuga dicta, voluptatem laborum provident exercitationem fugit libero explicabo itaque asperiores nulla incidunt quisquam labore. Odio temporibus quasi earum nisi.';
+import { LOREM_IPSUM } from '@/config';
 
 interface Data {
   basicUsageModalVisible: boolean;

@@ -5,6 +5,8 @@ import Breadcrumbs from '@/views/Breadcrumbs.vue';
 import Button from '@/views/Button.vue';
 import Checkbox from '@/views/Checkbox.vue';
 import Modal from '@/views/Modal.vue';
+import ExpansionPanel from '@/views/ExpansionPanel.vue';
+import ProgressCircular from '@/views/ProgressCircular.vue';
 
 Vue.use(VueRouter);
 
@@ -33,6 +35,16 @@ const routes: Array<RouteConfig> = [
     path: '/modal',
     name: 'modal',
     component: Modal,
+  },
+  {
+    path: '/expansion-panel',
+    name: 'expansion-panel',
+    component: ExpansionPanel,
+  },
+  {
+    path: '/progress-circular',
+    name: 'progress-circular',
+    component: ProgressCircular,
   },
 ];
 
