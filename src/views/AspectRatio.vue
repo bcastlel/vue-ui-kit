@@ -27,7 +27,7 @@ export default Vue.extend({
 
 .aspect-ratio {
   width: 50%;
-  min-width: 300px;
+  min-width: 290px;
 
   &__content {
     border-radius: 8px;
