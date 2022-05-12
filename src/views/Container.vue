@@ -1,7 +1,9 @@
 <template>
   <component-page title="Container">
     <template #basicUsage>
-      All the content of this page is in a container
+      <p>
+        All the content of this page is in a container
+      </p>
     </template>
   </component-page>
 </template>
