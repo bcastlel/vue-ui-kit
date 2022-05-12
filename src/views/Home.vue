@@ -66,13 +66,13 @@
 
             <ul class="components__item-list">
               <li class="components__item">
-                <router-link :to="{ name: 'breadcrumbs' }">
+                <router-link :to="{ name: 'container' }">
                   Container
                 </router-link>
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'breadcrumbs' }">
+                <router-link :to="{ name: 'aspect-ratio' }">
                   Aspect Ratio
                 </router-link>
               </li>

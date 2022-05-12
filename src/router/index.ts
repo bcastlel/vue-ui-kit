@@ -7,6 +7,8 @@ import Checkbox from '@/views/Checkbox.vue';
 import Modal from '@/views/Modal.vue';
 import ExpansionPanel from '@/views/ExpansionPanel.vue';
 import ProgressCircular from '@/views/ProgressCircular.vue';
+import Container from '@/views/Container.vue';
+import AspectRatio from '@/views/AspectRatio.vue';
 
 Vue.use(VueRouter);
 
@@ -45,6 +47,16 @@ const routes: Array<RouteConfig> = [
     path: '/progress-circular',
     name: 'progress-circular',
     component: ProgressCircular,
+  },
+  {
+    path: '/container',
+    name: 'container',
+    component: Container,
+  },
+  {
+    path: '/aspect-ratio',
+    name: 'aspect-ratio',
+    component: AspectRatio,
   },
 ];
 
