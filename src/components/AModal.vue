@@ -54,14 +54,14 @@ interface Data {
 }
 
 export default Vue.extend({
-  name: 'AppModal',
+  name: 'AModal',
   components: {
     Portal,
     CloseIcon,
   },
   props: {
     contentClass: { type: String, default: '' },
-    hideCloseButton: { type: Boolean, default: false },
+    hideCloseButton: { type: Boolean },
     transition: { type: String, default: 'fade' },
   },
   data(): Data {

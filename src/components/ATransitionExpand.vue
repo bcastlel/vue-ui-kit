@@ -2,7 +2,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'TransitionExpand',
+  name: 'ATransitionExpand',
   functional: true,
   render(h, context) {
     const data = {

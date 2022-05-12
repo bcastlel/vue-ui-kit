@@ -20,19 +20,19 @@
       </div>
     </div>
 
-    <transition-expand>
+    <a-transition-expand>
       <div v-show="contentVisible" class="expansion-panel__content-wrapper">
         <div class="expansion-panel__content">
           <slot />
         </div>
       </div>
-    </transition-expand>
+    </a-transition-expand>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import TransitionExpand from '@/components/TransitionExpand.vue';
+import ATransitionExpand from '@/components/ATransitionExpand.vue';
 import ChevronDownIcon from '@/assets/chevron-down.svg';
 
 interface Data {
@@ -40,14 +40,14 @@ interface Data {
 }
 
 export default Vue.extend({
-  name: 'ExpansionPanel',
+  name: 'AExpansionPanel',
   components: {
-    TransitionExpand,
+    ATransitionExpand,
     ChevronDownIcon,
   },
   props: {
-    initiallyExpanded: { type: Boolean, default: false },
-    headerBlock: { type: Boolean, default: false },
+    initiallyExpanded: { type: Boolean },
+    headerBlock: { type: Boolean },
   },
   data(): Data {
     return {
@@ -66,18 +66,12 @@ export default Vue.extend({
 @import '@/styles/vars';
 
 .expansion-panel {
-  $root: &;
-
-  &_content-visible #{$root}__icon {
-    transform: rotate(-180deg);
-  }
-
   &__header {
     user-select: none;
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
-    transition: color 0.1s;
+    transition: color 0.15s;
 
     &_block {
       display: flex;
@@ -85,7 +79,7 @@ export default Vue.extend({
 
     &:hover,
     &:focus-visible {
-      color: $primary;
+      color: $secondary;
     }
   }
 
@@ -108,6 +102,10 @@ export default Vue.extend({
 
   &__content {
     padding-top: 6px;
+  }
+
+  &_content-visible &__icon {
+    transform: rotate(-180deg);
   }
 }
 </style>

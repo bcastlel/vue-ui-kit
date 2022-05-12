@@ -13,7 +13,7 @@ const StrokeWidth = {
 } as const;
 
 export default Vue.extend({
-  name: 'ProgressCircular',
+  name: 'AProgressCircular',
   props: {
     value: {
       type: Number,
@@ -25,7 +25,7 @@ export default Vue.extend({
       validator: (value: Thickness): boolean => THICKNESSES.includes(value),
       default: 'normal',
     },
-    indeterminate: { type: Boolean, default: false },
+    indeterminate: { type: Boolean },
   },
   computed: {
     normalizedValue(): number {
@@ -145,15 +145,6 @@ export default Vue.extend({
 
   $root: &;
 
-  &_indeterminate {
-    animation: rotate-360 0.7s linear infinite;
-
-    #{$root}__circle {
-      stroke-dashoffset: 23;
-      stroke-linecap: round;
-    }
-  }
-
   &__svg {
     position: absolute;
     top: 0;
@@ -169,6 +160,15 @@ export default Vue.extend({
 
     &_placeholder {
       opacity: 0.3;
+    }
+  }
+
+  &_indeterminate {
+    animation: rotate-360 0.7s linear infinite;
+
+    #{$root}__circle {
+      stroke-dashoffset: 23;
+      stroke-linecap: round;
     }
   }
 }
