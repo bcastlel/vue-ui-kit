@@ -8,6 +8,16 @@ module.exports = {
     ],
   },
   chainWebpack: (config) => {
+    /* https://github.com/JuniorTour/vue-template-babel-compiler#1-vue-cli */
+    const vueRule = config.module.rule('vue');
+
+    vueRule
+      .use('vue-loader')
+      .tap((options) => {
+        options.compiler = require('vue-template-babel-compiler');
+        return options;
+      });
+
     /* https://github.com/visualfanatic/vue-svg-loader#vue-cli */
     const svgRule = config.module.rule('svg');
 

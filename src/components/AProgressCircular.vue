@@ -25,7 +25,7 @@ export default Vue.extend({
       validator: (value: Thickness): boolean => THICKNESSES.includes(value),
       default: 'normal',
     },
-    indeterminate: { type: Boolean },
+    indeterminate: Boolean,
   },
   computed: {
     normalizedValue(): number {

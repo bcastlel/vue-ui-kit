@@ -31,7 +31,7 @@ export default Vue.extend({
 
   &__content {
     border-radius: 8px;
-    border: 1px solid $mono-lighter;
+    border: 1px solid $mono-lightest;
     padding: 5%;
   }
 }
