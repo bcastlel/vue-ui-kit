@@ -47,9 +47,9 @@ export default Vue.extend({
     },
     label: { type: String, default: '' },
     // eslint-disable-next-line vue/require-default-prop
-    value: { type: null as CheckboxValue },
-    disabled: { type: Boolean },
-    indeterminate: { type: Boolean },
+    value: null as CheckboxValue,
+    disabled: Boolean,
+    indeterminate: Boolean,
   },
   computed: {
     localChecked: {

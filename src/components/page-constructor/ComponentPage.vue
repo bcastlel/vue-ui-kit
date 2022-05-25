@@ -42,7 +42,7 @@ export default Vue.extend({
   },
   props: {
     title: { type: String, required: true },
-    enlargedExampleGap: { type: Boolean },
+    enlargedExampleGap: Boolean,
   },
 });
 </script>
@@ -73,6 +73,8 @@ export default Vue.extend({
     }
 
     svg {
+      width: 100%;
+      max-height: 100%;
       fill: currentColor;
     }
   }

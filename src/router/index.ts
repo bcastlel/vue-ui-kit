@@ -4,8 +4,9 @@ import Home from '@/views/Home.vue';
 import Breadcrumbs from '@/views/Breadcrumbs.vue';
 import Button from '@/views/Button.vue';
 import Checkbox from '@/views/Checkbox.vue';
-import Modal from '@/views/Modal.vue';
 import ExpansionPanel from '@/views/ExpansionPanel.vue';
+import Modal from '@/views/Modal.vue';
+import Pagination from '@/views/Pagination.vue';
 import ProgressCircular from '@/views/ProgressCircular.vue';
 import Container from '@/views/Container.vue';
 import AspectRatio from '@/views/AspectRatio.vue';
@@ -34,14 +35,19 @@ const routes: Array<RouteConfig> = [
     component: Checkbox,
   },
   {
+    path: '/expansion-panel',
+    name: 'expansion-panel',
+    component: ExpansionPanel,
+  },
+  {
     path: '/modal',
     name: 'modal',
     component: Modal,
   },
   {
-    path: '/expansion-panel',
-    name: 'expansion-panel',
-    component: ExpansionPanel,
+    path: '/pagination',
+    name: 'pagination',
+    component: Pagination,
   },
   {
     path: '/progress-circular',

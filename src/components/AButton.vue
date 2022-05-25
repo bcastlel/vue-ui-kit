@@ -50,9 +50,9 @@ export default Vue.extend({
       validator: (value: Size): boolean => SIZES.includes(value),
       default: 'medium',
     },
-    reversed: { type: Boolean },
-    iconOnly: { type: Boolean },
-    loading: { type: Boolean },
+    reversed: Boolean,
+    iconOnly: Boolean,
+    loading: Boolean,
   },
 });
 </script>
@@ -182,6 +182,8 @@ $heights: (
     }
 
     svg {
+      width: 100%;
+      max-height: 100%;
       fill: currentColor;
     }
   }

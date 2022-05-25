@@ -40,14 +40,20 @@
               </li>
 
               <li class="components__item">
+                <router-link :to="{ name: 'expansion-panel' }">
+                  Expansion Panel
+                </router-link>
+              </li>
+
+              <li class="components__item">
                 <router-link :to="{ name: 'modal' }">
                   Modal
                 </router-link>
               </li>
 
               <li class="components__item">
-                <router-link :to="{ name: 'expansion-panel' }">
-                  Expansion Panel
+                <router-link :to="{ name: 'pagination' }">
+                  Pagination
                 </router-link>
               </li>
 

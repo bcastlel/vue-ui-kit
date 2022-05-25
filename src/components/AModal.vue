@@ -61,7 +61,7 @@ export default Vue.extend({
   },
   props: {
     contentClass: { type: String, default: '' },
-    hideCloseButton: { type: Boolean },
+    hideCloseButton: Boolean,
     transition: { type: String, default: 'fade' },
   },
   data(): Data {
