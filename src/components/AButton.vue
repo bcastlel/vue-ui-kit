@@ -11,6 +11,7 @@
       },
     ]"
     type="button"
+    @click="$emit('click')"
   >
     <span v-if="$slots.icon" class="button__icon">
       <slot name="icon" />

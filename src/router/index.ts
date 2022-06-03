@@ -8,6 +8,7 @@ import ExpansionPanel from '@/views/ExpansionPanel.vue';
 import Modal from '@/views/Modal.vue';
 import Pagination from '@/views/Pagination.vue';
 import ProgressCircular from '@/views/ProgressCircular.vue';
+import Radio from '@/views/Radio.vue';
 import Container from '@/views/Container.vue';
 import AspectRatio from '@/views/AspectRatio.vue';
 
@@ -55,6 +56,11 @@ const routes: Array<RouteConfig> = [
     component: ProgressCircular,
   },
   {
+    path: '/radio',
+    name: 'radio',
+    component: Radio,
+  },
+  {
     path: '/container',
     name: 'container',
     component: Container,
@@ -71,7 +77,12 @@ export const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  scrollBehavior() {
-    return { x: 0, y: 0 };
+  scrollBehavior(to, from, savedPosition) {
+    return savedPosition ?? { x: 0, y: 0 };
   },
+});
+
+router.beforeEach((to, from, next) => {
+  Vue.prototype.$previousRoute = from;
+  next();
 });

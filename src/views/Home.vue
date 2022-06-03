@@ -62,6 +62,12 @@
                   Progress Circular
                 </router-link>
               </li>
+
+              <li class="components__item">
+                <router-link :to="{ name: 'radio' }">
+                  Radio
+                </router-link>
+              </li>
             </ul>
           </div>
 

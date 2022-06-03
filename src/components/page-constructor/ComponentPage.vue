@@ -3,9 +3,12 @@
     <div class="head">
       <div class="container">
         <div class="head__body">
-          <router-link class="head__back" :to="{ name: 'home' }">
+          <button
+            class="head__back"
+            @click="$previousRoute.name ? $router.back() : $router.push({ name: 'home' })"
+          >
             <arrow-left-icon />
-          </router-link>
+          </button>
 
           <h1 class="head__title">
             {{ title }}
@@ -65,6 +68,13 @@ export default Vue.extend({
     width: 30px;
     height: 30px;
     flex-shrink: 0;
+    color: $secondary;
+    transition: color 0.1s;
+
+    &:hover,
+    &:focus-visible {
+      color: $secondary-darker;
+    }
 
     @media (max-width: $xs-breakpoint) {
       margin-right: 13px;
