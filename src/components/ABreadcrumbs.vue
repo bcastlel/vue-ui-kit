@@ -27,11 +27,13 @@
 import Vue, { PropType } from 'vue';
 import { BreadcrumbsItem } from '@/models/breadcrumbs';
 
+const DEFAULT_DIVIDER = '/';
+
 export default Vue.extend({
   name: 'ABreadcrumbs',
   props: {
     items: { type: Array as PropType<BreadcrumbsItem[]>, required: true },
-    divider: { type: String, default: '/' },
+    divider: { type: String, default: DEFAULT_DIVIDER },
   },
   methods: {
     isLastItem(index: number): boolean {

@@ -8,13 +8,13 @@ module.exports = {
     'plugin:vue/recommended',
   ],
   rules: {
-    /* https://eslint.org/docs/rules/#possible-problems */
+    /* see https://eslint.org/docs/rules/#possible-problems */
     'array-callback-return': 'error',
     'no-await-in-loop': 'error',
     'no-duplicate-imports': 'error',
     'no-self-compare': 'error',
 
-    /* https://eslint.org/docs/rules/#suggestions */
+    /* see https://eslint.org/docs/rules/#suggestions */
     curly: 'error',
     'default-case': 'error',
     eqeqeq: 'error',
@@ -33,7 +33,7 @@ module.exports = {
     'prefer-destructuring': 'error',
     'quote-props': ['error', 'as-needed'],
 
-    /* https://eslint.org/docs/rules/#layout-formatting */
+    /* see https://eslint.org/docs/rules/#layout-formatting */
     'brace-style': 'error',
     'comma-dangle': ['error', 'always-multiline'],
     'comma-spacing': 'error',
@@ -56,21 +56,21 @@ module.exports = {
     'space-infix-ops': 'error',
 
 
-    /* https://eslint.vuejs.org/rules/#priority-b-strongly-recommended-improving-readability-for-vue-js-2-x */
+    /* see https://eslint.vuejs.org/rules/#priority-b-strongly-recommended-improving-readability-for-vue-js-2-x */
     'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     'vue/max-attributes-per-line': ['error', {
       singleline: 2,
       multiline: 1,
     }],
 
-    /* https://eslint.vuejs.org/rules/#uncategorized */
+    /* see https://eslint.vuejs.org/rules/#uncategorized */
     'vue/match-component-file-name': ['error', {
       extensions: ['vue'],
       shouldMatchCase: false,
     }],
     'vue/require-name-property': 'error',
 
-    /* https://eslint.vuejs.org/rules/#extension-rules */
+    /* see https://eslint.vuejs.org/rules/#extension-rules */
     'vue/eqeqeq': 'error',
   },
   overrides: [
@@ -78,7 +78,7 @@ module.exports = {
       files: ['*.ts', '*.tsx', '*.vue'],
       extends: ['@vue/typescript/recommended'],
       rules: {
-        /* https://www.npmjs.com/package/@typescript-eslint/eslint-plugin */
+        /* see https://www.npmjs.com/package/@typescript-eslint/eslint-plugin */
         '@typescript-eslint/explicit-function-return-type': 'error',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-inferrable-types': 'off',
