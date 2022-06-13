@@ -9,6 +9,7 @@ import Modal from '@/views/Modal.vue';
 import Pagination from '@/views/Pagination.vue';
 import ProgressCircular from '@/views/ProgressCircular.vue';
 import Radio from '@/views/Radio.vue';
+import Rating from '@/views/Rating.vue';
 import Container from '@/views/Container.vue';
 import AspectRatio from '@/views/AspectRatio.vue';
 
@@ -59,6 +60,11 @@ const routes: Array<RouteConfig> = [
     path: '/radio',
     name: 'radio',
     component: Radio,
+  },
+  {
+    path: '/rating',
+    name: 'rating',
+    component: Rating,
   },
   {
     path: '/container',

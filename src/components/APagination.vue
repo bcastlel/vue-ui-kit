@@ -53,9 +53,9 @@ import Vue from 'vue';
 import ChevronLeftIcon from '@/assets/chevron-left.svg';
 import ChevronRightIcon from '@/assets/chevron-right.svg';
 
-type Page = number | null;
-
 const MIN_TOTAL_VISIBLE = 7;
+
+type Page = number | null;
 
 export default Vue.extend({
   name: 'APagination',
@@ -169,7 +169,7 @@ export default Vue.extend({
     }
   }
 
-  /* stylelint-disable-next-line no-descending-specificity */
+  // stylelint-disable-next-line no-descending-specificity
   &__item {
     min-width: 36px;
 
@@ -187,7 +187,7 @@ export default Vue.extend({
     }
   }
 
-  /* stylelint-disable-next-line no-descending-specificity */
+  // stylelint-disable-next-line no-descending-specificity
   &__arrow {
     width: 36px;
     display: inline-flex;
