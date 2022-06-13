@@ -68,6 +68,12 @@
                   Radio
                 </router-link>
               </li>
+
+              <li class="components__item">
+                <router-link :to="{ name: 'rating' }">
+                  Rating
+                </router-link>
+              </li>
             </ul>
           </div>
 

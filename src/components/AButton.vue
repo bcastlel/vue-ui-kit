@@ -122,7 +122,6 @@ $heights: (
       }
 
       #{$root}__loader {
-        margin: 1px;
         color: $mono;
       }
     }
@@ -166,6 +165,7 @@ $heights: (
 
   &_loading {
     pointer-events: none;
+    background-color: white;
   }
 
   &[disabled] {
