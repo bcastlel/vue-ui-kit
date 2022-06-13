@@ -7,7 +7,7 @@
       tabindex="0"
       @keydown.esc="close"
     >
-      <!-- https://github.com/LinusBorg/vue-simple-portal#transitions -->
+      <!-- see https://github.com/LinusBorg/vue-simple-portal#transitions -->
       <transition
         name="fade"
         appear
@@ -48,6 +48,7 @@ import { getFocusableElement } from '@/utils/get-focusable-element';
 import { ComponentOptionsWithScopeId, ComponentScopeAttrs } from '@/models/common';
 
 const CLASS_NAME = 'modal';
+const DEFAULT_TRANSITION = 'fade';
 
 interface Data {
   visible: boolean;
@@ -62,7 +63,7 @@ export default Vue.extend({
   props: {
     contentClass: { type: String, default: '' },
     hideCloseButton: Boolean,
-    transition: { type: String, default: 'fade' },
+    transition: { type: String, default: DEFAULT_TRANSITION },
   },
   data(): Data {
     return {
@@ -73,7 +74,7 @@ export default Vue.extend({
     className(): typeof CLASS_NAME {
       return CLASS_NAME;
     },
-    // https://github.com/LinusBorg/portal-vue/issues/263
+    // see https://github.com/LinusBorg/portal-vue/issues/263
     scopeAttrs(): ComponentScopeAttrs {
       const scopeAttr = (this.$vnode.context?.$options as ComponentOptionsWithScopeId)._scopeId;
       return scopeAttr ? { [scopeAttr]: '' } : null;

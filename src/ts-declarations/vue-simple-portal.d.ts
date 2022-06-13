@@ -1,5 +1,4 @@
 /* eslint-disable no-var */
-
 declare module '@linusborg/vue-simple-portal' {
   import { PluginFunction } from 'vue';
 

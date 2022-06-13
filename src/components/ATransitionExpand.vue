@@ -62,7 +62,7 @@ export default Vue.extend({
 .expand-enter-active,
 .expand-leave-active {
   overflow: hidden;
-  transition: height .3s;
+  transition: height 0.3s;
 }
 
 .expand-enter,
