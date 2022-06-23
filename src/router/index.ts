@@ -10,6 +10,7 @@ import Pagination from '@/views/Pagination.vue';
 import ProgressCircular from '@/views/ProgressCircular.vue';
 import Radio from '@/views/Radio.vue';
 import Rating from '@/views/Rating.vue';
+import Switcher from '@/views/Switcher.vue';
 import Container from '@/views/Container.vue';
 import AspectRatio from '@/views/AspectRatio.vue';
 
@@ -65,6 +66,11 @@ const routes: Array<RouteConfig> = [
     path: '/rating',
     name: 'rating',
     component: Rating,
+  },
+  {
+    path: '/switcher',
+    name: 'switcher',
+    component: Switcher,
   },
   {
     path: '/container',
