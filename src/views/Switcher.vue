@@ -1,7 +1,7 @@
 <template>
-  <component-page title="Checkbox" enlarged-example-gap>
+  <component-page title="Switcher" enlarged-example-gap>
     <template #basicUsage>
-      <a-checkbox v-model="basicUsageChecked" label="Checkbox" />
+      <a-switcher v-model="basicUsageChecked" label="Switcher" />
     </template>
 
     <component-usage-example caption="Model as array">
@@ -9,19 +9,19 @@
         Checked: {{ modelAsArrayChecked }}
       </p>
 
-      <a-checkbox
+      <a-switcher
         v-model="modelAsArrayChecked"
         label="First"
         value="first"
       />
 
-      <a-checkbox
+      <a-switcher
         v-model="modelAsArrayChecked"
         label="Second"
         value="second"
       />
 
-      <a-checkbox
+      <a-switcher
         v-model="modelAsArrayChecked"
         label="Third"
         value="third"
@@ -29,31 +29,19 @@
     </component-usage-example>
 
     <component-usage-example caption="Label slot">
-      <a-checkbox v-model="labelSlotChecked">
-        Check<span class="label-slot-highlighter">box</span>
-      </a-checkbox>
-    </component-usage-example>
-
-    <component-usage-example caption="Indeterminate state">
-      <a-checkbox
-        v-model="indeterminateStateChecked"
-        label="Checkbox"
-        :indeterminate.sync="indeterminateStateIndeterminate"
-      />
+      <a-switcher v-model="labelSlotChecked">
+        <span class="label-slot-highlighter">Switch</span>er
+      </a-switcher>
     </component-usage-example>
 
     <component-usage-example caption="Disabled option">
-      <a-checkbox checked disabled>
+      <a-switcher checked disabled>
         Checked
-      </a-checkbox>
+      </a-switcher>
 
-      <a-checkbox indeterminate disabled>
-        Indeterminate
-      </a-checkbox>
-
-      <a-checkbox disabled>
+      <a-switcher disabled>
         Unchecked
-      </a-checkbox>
+      </a-switcher>
     </component-usage-example>
   </component-page>
 </template>
@@ -62,30 +50,26 @@
 import Vue from 'vue';
 import ComponentPage from '@/components/page-constructor/ComponentPage.vue';
 import ComponentUsageExample from '@/components/page-constructor/ComponentUsageExample.vue';
-import ACheckbox from '@/components/ACheckbox.vue';
+import ASwitcher from '@/components/ASwitcher.vue';
 
 interface Data {
   basicUsageChecked: boolean;
   modelAsArrayChecked: string[];
   labelSlotChecked: boolean;
-  indeterminateStateChecked: boolean;
-  indeterminateStateIndeterminate: boolean;
 }
 
 export default Vue.extend({
-  name: 'Checkbox',
+  name: 'Switcher',
   components: {
     ComponentPage,
     ComponentUsageExample,
-    ACheckbox,
+    ASwitcher,
   },
   data(): Data {
     return {
       basicUsageChecked: false,
       modelAsArrayChecked: ['first'],
       labelSlotChecked: false,
-      indeterminateStateChecked: false,
-      indeterminateStateIndeterminate: true,
     };
   },
 });

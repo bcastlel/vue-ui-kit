@@ -47,11 +47,10 @@ import Vue from 'vue';
 import ComponentPage from '@/components/page-constructor/ComponentPage.vue';
 import ComponentUsageExample from '@/components/page-constructor/ComponentUsageExample.vue';
 import ARadio from '@/components/ARadio.vue';
-import { RadioChecked } from '@/models/radio';
 
 interface Data {
-  basicUsageChecked: RadioChecked;
-  labelSlotChecked: RadioChecked;
+  basicUsageChecked: string;
+  labelSlotChecked: string;
 }
 
 export default Vue.extend({
