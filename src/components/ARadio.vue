@@ -65,24 +65,28 @@ export default Vue.extend({
   &__control {
     border-radius: 50%;
     border: 2px solid $grey;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
     position: relative;
     transition: border-color 0.2s;
 
+    // circle
     &::before {
       content: '';
+      // in this case translate(-50%, -50%) doesn`t center on all resolutions
+      margin-top: -10px;
+      margin-left: -10px;
       border-radius: 50%;
-      width: 9px;
-      height: 9px;
+      width: 20px;
+      height: 20px;
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
+      transform: scale(0);
       background-color: $secondary;
-      transition: opacity 0.2s;
+      will-change: transform;
+      transition: transform 0.2s;
     }
   }
 
@@ -102,7 +106,7 @@ export default Vue.extend({
       border-color: $secondary;
 
       &::before {
-        opacity: 1;
+        transform: scale(0.5);
       }
     }
   }
