@@ -41,7 +41,7 @@
 
               <li class="components__item">
                 <router-link :to="{ name: 'expansion-panel' }">
-                  Expansion Panel
+                  Expansion panel
                 </router-link>
               </li>
 
@@ -59,7 +59,13 @@
 
               <li class="components__item">
                 <router-link :to="{ name: 'progress-circular' }">
-                  Progress Circular
+                  Progress circular
+                </router-link>
+              </li>
+
+              <li class="components__item">
+                <router-link :to="{ name: 'progress-linear' }">
+                  Progress linear
                 </router-link>
               </li>
 
@@ -97,7 +103,7 @@
 
               <li class="components__item">
                 <router-link :to="{ name: 'aspect-ratio' }">
-                  Aspect Ratio
+                  Aspect ratio
                 </router-link>
               </li>
             </ul>

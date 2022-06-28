@@ -66,17 +66,17 @@ export default Vue.extend({
   props: {
     value: {
       type: Number,
-      validator: (value: number): boolean => Number.isInteger(value),
+      validator: (value: number) => Number.isInteger(value),
       default: 0,
     },
     length: {
       type: Number,
-      validator: (value: number): boolean => Number.isInteger(value) && value > 0,
+      validator: (value: number) => Number.isInteger(value) && value > 0,
       required: true,
     },
     totalVisible: {
       type: Number,
-      validator: (value: number): boolean => Number.isInteger(value) && value >= MIN_TOTAL_VISIBLE,
+      validator: (value: number) => Number.isInteger(value) && value >= MIN_TOTAL_VISIBLE,
       default: MIN_TOTAL_VISIBLE,
     },
     disabled: Boolean,

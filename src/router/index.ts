@@ -8,6 +8,7 @@ import ExpansionPanel from '@/views/ExpansionPanel.vue';
 import Modal from '@/views/Modal.vue';
 import Pagination from '@/views/Pagination.vue';
 import ProgressCircular from '@/views/ProgressCircular.vue';
+import ProgressLinear from '@/views/ProgressLinear.vue';
 import Radio from '@/views/Radio.vue';
 import Rating from '@/views/Rating.vue';
 import Switcher from '@/views/Switcher.vue';
@@ -56,6 +57,11 @@ const routes: Array<RouteConfig> = [
     path: '/progress-circular',
     name: 'progress-circular',
     component: ProgressCircular,
+  },
+  {
+    path: '/progress-linear',
+    name: 'progress-linear',
+    component: ProgressLinear,
   },
   {
     path: '/radio',
