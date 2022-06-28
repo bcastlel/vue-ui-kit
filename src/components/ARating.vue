@@ -40,7 +40,7 @@ export default Vue.extend({
     value: { type: Number, default: 0 },
     length: {
       type: Number,
-      validator: (value: number): boolean => Number.isInteger(value) && value > 0,
+      validator: (value: number) => Number.isInteger(value) && value > 0,
       default: DEFAULT_LENGTH,
     },
     readonly: Boolean,

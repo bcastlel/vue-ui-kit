@@ -4,6 +4,8 @@ import Vue, { PropType, VNode } from 'vue';
 const THICKNESSES = ['thin', 'normal', 'bold'] as const;
 type Thickness = typeof THICKNESSES[number];
 
+const MIN_VALUE = 0;
+const MAX_VALUE = 100;
 const VIEW_BOX_SIZE = 24;
 
 const StrokeWidth = {
@@ -17,24 +19,24 @@ export default Vue.extend({
   props: {
     value: {
       type: Number,
-      validator: (value: number): boolean => value >= 0 && value <= 100,
-      default: 0,
+      validator: (value: number) => value >= MIN_VALUE && value <= MAX_VALUE,
+      default: MIN_VALUE,
     },
     thickness: {
       type: String as PropType<Thickness>,
-      validator: (value: Thickness): boolean => THICKNESSES.includes(value),
+      validator: (value: Thickness) => THICKNESSES.includes(value),
       default: 'normal',
     },
     indeterminate: Boolean,
   },
   computed: {
     normalizedValue(): number {
-      if (this.value > 100) {
-        return 100;
+      if (this.value > MAX_VALUE) {
+        return MAX_VALUE;
       }
 
-      if (this.value < 0) {
-        return 0;
+      if (this.value < MIN_VALUE) {
+        return MIN_VALUE;
       }
 
       return this.value;
@@ -55,7 +57,7 @@ export default Vue.extend({
       return 2 * Math.PI * this.radius;
     },
     offset(): number {
-      return (100 - this.normalizedValue) / 100 * this.circumference;
+      return (MAX_VALUE - this.normalizedValue) / MAX_VALUE * this.circumference;
     },
   },
   methods: {
@@ -111,8 +113,8 @@ export default Vue.extend({
         attrs: {
           role: 'progressbar',
           'aria-valuenow': this.indeterminate ? undefined : this.normalizedValue,
-          'aria-valuemin': 0,
-          'aria-valuemax': 100,
+          'aria-valuemin': MIN_VALUE,
+          'aria-valuemax': MAX_VALUE,
         },
       },
       [

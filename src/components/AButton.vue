@@ -48,7 +48,7 @@ export default Vue.extend({
     },
     size: {
       type: String as PropType<Size>,
-      validator: (value: Size): boolean => SIZES.includes(value),
+      validator: (value: Size) => SIZES.includes(value),
       default: 'medium',
     },
     reversed: Boolean,
