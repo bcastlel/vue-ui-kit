@@ -100,7 +100,6 @@ export const router = new VueRouter({
   },
 });
 
-router.beforeEach((to, from, next) => {
+router.afterEach((to, from) => {
   Vue.prototype.$previousRoute = from;
-  next();
 });
