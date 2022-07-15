@@ -4,17 +4,19 @@
       v-for="(item, index) in items"
       :key="item.text"
       class="breadcrumbs__item"
+      :class="{ 'breadcrumbs__item_disabled': isDisabledItem(item, index) }"
     >
-      <router-link
-        class="breadcrumbs__link"
-        :class="{ 'breadcrumbs__link_disabled': isLastItem(index) }"
+      <component
+        :is="getItemTextComponent(item)"
+        class="breadcrumbs__item-text"
+        :href="item.href"
         :to="item.to"
-        :tabindex="isLastItem(index) ? -1 : undefined"
+        :tabindex="isDisabledItem(item, index) ? -1 : undefined"
       >
         {{ item.text }}
-      </router-link>
+      </component>
 
-      <div v-if="!isLastItem(index)" class="breadcrumbs__divider">
+      <div v-if="!isLastItem(index)" class="breadcrumbs__item-divider">
         <slot name="divider">
           {{ divider }}
         </slot>
@@ -36,8 +38,22 @@ export default Vue.extend({
     divider: { type: String, default: DEFAULT_DIVIDER },
   },
   methods: {
+    getItemTextComponent(item: BreadcrumbsItem) {
+      if (item.to) {
+        return 'router-link';
+      }
+
+      if (item.href) {
+        return 'a';
+      }
+
+      return 'div';
+    },
     isLastItem(index: number): boolean {
       return index === this.items.length - 1;
+    },
+    isDisabledItem(item: BreadcrumbsItem, index: number): boolean {
+      return item.disabled ?? this.isLastItem(index);
     },
   },
 });
@@ -48,30 +64,30 @@ export default Vue.extend({
 
 .breadcrumbs {
   padding: 6px 0;
+  font-size: 14px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 
   &__item {
-    font-size: 14px;
     display: flex;
     align-items: center;
-  }
 
-  &__link_disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
+    &-divider {
+      margin: 0 12px;
+      color: $mono;
 
-  &__divider {
-    margin: 0 12px;
-    color: $mono;
+      svg {
+        width: 1.15em;
+        height: 1.15em;
+        vertical-align: bottom;
+        fill: currentColor;
+      }
+    }
 
-    svg {
-      width: 16px;
-      height: 16px;
-      vertical-align: middle;
-      fill: currentColor;
+    &_disabled &-text {
+      opacity: 0.5;
+      pointer-events: none;
     }
   }
 }
