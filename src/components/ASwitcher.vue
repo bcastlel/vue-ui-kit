@@ -90,7 +90,7 @@ export default Vue.extend({
   &:hover,
   &:focus-within {
     #{$root}__control {
-      background-color: darken($grey, 5%);
+      background-color: darken($grey, 7.5%);
     }
   }
 

@@ -1,33 +1,26 @@
 <template>
-  <button
+  <component
+    :is="tag"
+    v-bind="mergedAttrs"
     class="button"
-    :class="[
-      `button_design_${design}`,
-      `button_size_${size}`,
-      {
-        'button_reversed': reversed,
-        'button_icon-only': iconOnly,
-        'button_loading': loading,
-      },
-    ]"
-    type="button"
+    :class="classes"
     @click="$emit('click')"
   >
-    <span v-if="$slots.icon" class="button__icon">
+    <span v-if="$slots.icon" class="button__icon-wrapper">
       <slot name="icon" />
     </span>
-    <span v-if="$slots.default && !iconOnly" class="button__text">
+    <span v-if="hasText" class="button__text">
       <slot />
     </span>
 
-    <span v-if="loading" class="button__loader">
-      <a-progress-circular class="button__loader-progress" indeterminate />
+    <span v-if="loading" class="button__loader-wrapper">
+      <a-progress-circular class="button__loader" indeterminate />
     </span>
-  </button>
+  </component>
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue';
+import Vue, { VNodeData, PropType } from 'vue';
 import AProgressCircular from '@/components/AProgressCircular.vue';
 
 const DESIGNS = ['primary', 'secondary', 'tertiary'] as const;
@@ -40,6 +33,7 @@ export default Vue.extend({
   components: {
     AProgressCircular,
   },
+  inheritAttrs: false,
   props: {
     design: {
       type: String as PropType<Design>,
@@ -51,9 +45,36 @@ export default Vue.extend({
       validator: (value: Size) => SIZES.includes(value),
       default: 'medium',
     },
+    tag: { type: String, default: 'button' },
+    outlined: Boolean,
+    plain: Boolean,
     reversed: Boolean,
-    iconOnly: Boolean,
     loading: Boolean,
+  },
+  computed: {
+    mergedAttrs(): VNodeData['attrs'] {
+      return {
+        type: this.tag === 'button' ? 'button' : undefined,
+        ...this.$attrs,
+      };
+    },
+    hasText(): boolean {
+      return Boolean(this.$slots.default);
+    },
+    classes(): VNodeData['class'] {
+      return [
+        `button_design_${this.design}`,
+        `button_size_${this.size}`,
+        {
+          button_transparent: this.outlined || this.plain,
+          button_outlined: this.outlined,
+          button_plain: this.plain,
+          button_reversed: this.reversed,
+          'button_has-no-text': !this.hasText,
+          button_loading: this.loading,
+        },
+      ];
+    },
   },
 });
 </script>
@@ -61,17 +82,21 @@ export default Vue.extend({
 <style lang="scss" scoped>
 @import '@/styles/vars';
 
-$heights: (
+$padding-x: 0.9125em;
+$sizes: (
   'small': 30px,
   'medium': 36px,
   'large': 42px,
 );
+$icon-margin: 0.5em;
+$loader-size: calc(1em + 4px);
 
 .button {
   border-radius: 4px;
   border: 1px solid $secondary;
-  padding: 0.425em 0.9125em;
-  min-height: map-get($heights, 'medium');
+  padding: 0.425em $padding-x;
+  min-width: map-get($sizes, 'medium');
+  min-height: map-get($sizes, 'medium');
   color: white;
   background-color: $secondary;
   user-select: none;
@@ -79,7 +104,6 @@ $heights: (
   justify-content: center;
   align-items: center;
   position: relative;
-  overflow: hidden;
   transition:
     border-color 0.2s,
     color 0.1s,
@@ -93,6 +117,55 @@ $heights: (
     background-color: $secondary-darker;
   }
 
+  &_size {
+    &_small {
+      min-width: map-get($sizes, 'small');
+      min-height: map-get($sizes, 'small');
+      font-size: 14px;
+    }
+
+    &_large {
+      min-width: map-get($sizes, 'large');
+      min-height: map-get($sizes, 'large');
+      font-size: 18px;
+    }
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &__icon-wrapper {
+    margin-right: $icon-margin;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      max-height: 100%;
+      fill: currentColor;
+    }
+  }
+
+  &__loader {
+    &-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    width: $loader-size;
+    height: $loader-size;
+    color: inherit;
+  }
+
   &_design {
     &_secondary {
       border-color: $mono;
@@ -103,109 +176,76 @@ $heights: (
         border-color: $mono-darker;
         background-color: $mono-darker;
       }
-
-      #{$root}__loader {
-        color: $mono;
-      }
     }
 
     &_tertiary {
-      border-color: $mono;
-      color: $mono;
-      background-color: transparent;
+      border-color: $mono-lightest;
+      color: $primary;
+      background-color: $mono-lightest;
 
       &:hover,
       &:focus-visible {
-        border-color: $mono-darker;
-        color: $mono-darker;
-        background-color: transparent;
+        border-color: darken($mono-lightest, 7.5%);
+        background-color: darken($mono-lightest, 7.5%);
       }
+    }
+  }
 
-      #{$root}__loader {
+  &_transparent {
+    color: $secondary;
+    background-color: transparent;
+
+    &:hover,
+    &:focus-visible {
+      color: $secondary-darker;
+      background-color: transparent;
+    }
+
+    &#{$root}_design {
+      &_secondary {
         color: $mono;
-      }
-    }
-  }
 
-  &_size {
-    &_small {
-      min-height: map-get($heights, 'small');
-      font-size: 14px;
-    }
-
-    &_large {
-      min-height: map-get($heights, 'large');
-      font-size: 18px;
-    }
-  }
-
-  &_reversed #{$root}__icon {
-    order: 1;
-
-    &:not(:only-child) {
-      margin-right: 0;
-      margin-left: 0.5em;
-    }
-  }
-
-  &_icon-only {
-    padding: 0.425em;
-    width: map-get($heights, 'medium');
-
-    &#{$root}_size {
-      &_small {
-        width: map-get($heights, 'small');
+        &:hover,
+        &:focus-visible {
+          color: $mono-darker;
+        }
       }
 
-      &_large {
-        width: map-get($heights, 'large');
+      &_tertiary {
+        color: $primary;
+
+        &:hover,
+        &:focus-visible {
+          color: $primary-darker;
+        }
       }
     }
   }
 
   &_loading {
     pointer-events: none;
-    background-color: white;
-  }
 
-  &[disabled] {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  &__icon {
-    width: 1em;
-    height: 1em;
-    flex-shrink: 0;
-
-    &:not(:only-child) {
-      margin-right: 0.5em;
-    }
-
-    svg {
-      width: 100%;
-      max-height: 100%;
-      fill: currentColor;
+    > :not(#{$root}__loader-wrapper) {
+      opacity: 0;
     }
   }
 
-  &__loader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    color: $secondary;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  &_reversed &__icon-wrapper {
+    margin-right: 0;
+    margin-left: $icon-margin;
+    order: 1;
+  }
 
-    &-progress {
-      width: calc(1em + 4px);
-      height: calc(1em + 4px);
-      color: currentColor;
-    }
+  &_has-no-text &__icon-wrapper {
+    margin: 0 -#{$padding-x};
+  }
+
+  &_plain {
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    min-width: $loader-size;
+    min-height: $loader-size;
   }
 }
 </style>

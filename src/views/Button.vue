@@ -18,6 +18,34 @@
       </a-button>
     </component-usage-example>
 
+    <component-usage-example caption="Outlined style">
+      <a-button outlined>
+        Primary
+      </a-button>
+
+      <a-button design="secondary" outlined>
+        Secondary
+      </a-button>
+
+      <a-button design="tertiary" outlined>
+        Tertiary
+      </a-button>
+    </component-usage-example>
+
+    <component-usage-example caption="Plain style">
+      <a-button plain>
+        Primary
+      </a-button>
+
+      <a-button design="secondary" plain>
+        Secondary
+      </a-button>
+
+      <a-button design="tertiary" plain>
+        Tertiary
+      </a-button>
+    </component-usage-example>
+
     <component-usage-example caption="Disabled option">
       <a-button disabled>
         Primary
@@ -63,7 +91,7 @@
     </component-usage-example>
 
     <component-usage-example caption="Icon-only style">
-      <a-button icon-only>
+      <a-button>
         <template #icon>
           <check-icon />
         </template>
@@ -81,6 +109,24 @@
 
       <a-button design="tertiary" loading>
         Tertiary
+      </a-button>
+    </component-usage-example>
+
+    <component-usage-example caption="Custom tag (or component)">
+      <a-button
+        tag="a"
+        href="https://github.com/bcastlel/vue-ui-kit"
+        target="_blank"
+      >
+        Anchor
+      </a-button>
+
+      <a-button
+        design="secondary"
+        tag="router-link"
+        :to="{ name: 'breadcrumbs' }"
+      >
+        Router link
       </a-button>
     </component-usage-example>
   </component-page>
