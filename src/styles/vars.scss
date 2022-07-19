@@ -4,6 +4,7 @@ $secondary: #3aa575;
 $mono: #646464;
 $grey: #ccc;
 
+$primary-darker: darken($primary, 15%);
 $secondary-darker: darken($secondary, 15%);
 $secondary-lightest: lighten($secondary, 45%);
 $mono-darker: darken($mono, 15%);
