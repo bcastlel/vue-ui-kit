@@ -13,7 +13,7 @@
         <slot name="caption" :content-visible="contentVisible" />
       </div>
 
-      <div class="expansion-panel__icon">
+      <div class="expansion-panel__icon-wrapper">
         <slot name="icon">
           <chevron-down-icon />
         </slot>
@@ -88,15 +88,15 @@ export default Vue.extend({
     font-weight: 700;
   }
 
-  &__icon {
+  &__icon-wrapper {
     width: 24px;
     height: 24px;
-    transition: transform 0.2s;
 
     svg {
       width: 100%;
       max-height: 100%;
       fill: currentColor;
+      transition: transform 0.2s;
     }
   }
 
@@ -104,7 +104,7 @@ export default Vue.extend({
     padding-top: 6px;
   }
 
-  &_content-visible &__icon {
+  &_content-visible &__icon-wrapper svg {
     transform: rotate(-180deg);
   }
 }
