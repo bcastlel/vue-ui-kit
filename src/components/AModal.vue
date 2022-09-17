@@ -158,16 +158,16 @@ export default Vue.extend({
 
     $self: &;
 
+    &-icon {
+      fill: $mono;
+      transition: fill 0.1s;
+    }
+
     &:hover,
     &:focus-visible {
       #{$self}-icon {
         fill: $mono-darker;
       }
-    }
-
-    &-icon {
-      fill: $mono;
-      transition: fill 0.1s;
     }
   }
 }
