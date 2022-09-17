@@ -117,13 +117,6 @@ export default Vue.extend({
     }
   }
 
-  &:hover,
-  &:focus-within {
-    #{$root}__control {
-      border-color: $secondary;
-    }
-  }
-
   &__input {
     position: absolute;
     z-index: -1;
@@ -147,6 +140,18 @@ export default Vue.extend({
     margin-left: 10px;
   }
 
+  &:hover,
+  &:focus-within {
+    #{$root}__control {
+      border-color: $secondary;
+    }
+
+    #{$root}__input:checked + #{$root}__control {
+      border-color: darken($secondary, 7.5%);
+      background-color: darken($secondary, 7.5%);
+    }
+  }
+
   &_indeterminate {
     #{$root}__input + #{$root}__control {
       border-color: $mono;
@@ -158,6 +163,14 @@ export default Vue.extend({
         &_indeterminate {
           opacity: 1;
         }
+      }
+    }
+
+    &:hover,
+    &:focus-within {
+      #{$root}__input + #{$root}__control {
+        border-color: darken($mono, 7.5%);
+        background-color: darken($mono, 7.5%);
       }
     }
   }
