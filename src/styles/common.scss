@@ -1,10 +1,11 @@
-@import '@/styles/vars';
-@import '@/styles/blocks/container';
-@import '@/styles/blocks/aspect-ratio';
-
 body {
   font-family: Inter, Helvetica, sans-serif;
   color: $primary;
+}
+
+[disabled],
+[readonly] {
+  pointer-events: none;
 }
 
 a {

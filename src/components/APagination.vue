@@ -195,7 +195,6 @@ export default Vue.extend({
 
     &[disabled] {
       opacity: 0.5;
-      pointer-events: none;
     }
 
     svg {
