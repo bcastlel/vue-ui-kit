@@ -1,19 +1,22 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '@/views/Home.vue';
-import Breadcrumbs from '@/views/Breadcrumbs.vue';
-import Button from '@/views/Button.vue';
-import Checkbox from '@/views/Checkbox.vue';
-import ExpansionPanel from '@/views/ExpansionPanel.vue';
-import Modal from '@/views/Modal.vue';
-import Pagination from '@/views/Pagination.vue';
-import ProgressCircular from '@/views/ProgressCircular.vue';
-import ProgressLinear from '@/views/ProgressLinear.vue';
-import Radio from '@/views/Radio.vue';
-import Rating from '@/views/Rating.vue';
-import Switcher from '@/views/Switcher.vue';
-import Container from '@/views/Container.vue';
-import AspectRatio from '@/views/AspectRatio.vue';
+
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+const Home = () => import(/* webpackChunkName: "views/Home" */ '@/views/Home.vue');
+const Breadcrumbs = () => import(/* webpackChunkName: "views/Breadcrumbs" */ '@/views/Breadcrumbs.vue');
+const Button = () => import(/* webpackChunkName: "views/Button" */ '@/views/Button.vue');
+const Checkbox = () => import(/* webpackChunkName: "views/Checkbox" */ '@/views/Checkbox.vue');
+const ExpansionPanel = () => import(/* webpackChunkName: "views/ExpansionPanel" */ '@/views/ExpansionPanel.vue');
+const Modal = () => import(/* webpackChunkName: "views/Modal" */ '@/views/Modal.vue');
+const Pagination = () => import(/* webpackChunkName: "views/Pagination" */ '@/views/Pagination.vue');
+const ProgressCircular = () => import(/* webpackChunkName: "views/ProgressCircular" */ '@/views/ProgressCircular.vue');
+const ProgressLinear = () => import(/* webpackChunkName: "views/ProgressLinear" */ '@/views/ProgressLinear.vue');
+const Radio = () => import(/* webpackChunkName: "views/Radio" */ '@/views/Radio.vue');
+const Rating = () => import(/* webpackChunkName: "views/Rating" */ '@/views/Rating.vue');
+const Switcher = () => import(/* webpackChunkName: "views/Switcher" */ '@/views/Switcher.vue');
+const Container = () => import(/* webpackChunkName: "views/Container" */ '@/views/Container.vue');
+const AspectRatio = () => import(/* webpackChunkName: "views/AspectRatio" */ '@/views/AspectRatio.vue');
+/* eslint-enable @typescript-eslint/explicit-function-return-type */
 
 Vue.use(VueRouter);
 

@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Raleway:wght@500;600&display=swap');
 
+@import './vars';
 @import './reset';
 @import './common';
+@import './blocks/container';
+@import './blocks/aspect-ratio';

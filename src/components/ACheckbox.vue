@@ -18,7 +18,7 @@
       <minus-icon class="checkbox__control-icon checkbox__control-icon_indeterminate" />
     </span>
 
-    <span v-if="$slots.default || label" class="checkbox__label">
+    <span v-if="$slots.default ?? label" class="checkbox__label">
       <slot>{{ label }}</slot>
     </span>
   </label>

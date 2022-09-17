@@ -9,7 +9,7 @@
     >
     <span class="radio__control" />
 
-    <span v-if="$slots.default || label" class="radio__label">
+    <span v-if="$slots.default ?? label" class="radio__label">
       <slot>{{ label }}</slot>
     </span>
   </label>
@@ -17,7 +17,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { RadioValue, RadioChecked } from '@/models/radio';
 
 export default Vue.extend({
   name: 'ARadio',
@@ -27,18 +26,18 @@ export default Vue.extend({
   },
   props: {
     /* eslint-disable vue/require-default-prop */
-    checked: null as RadioChecked,
-    value: null as RadioValue,
+    checked: null as any,
+    value: null as any,
     /* eslint-enable vue/require-default-prop */
     label: { type: String, default: '' },
     disabled: Boolean,
   },
   computed: {
     localChecked: {
-      get(): RadioChecked {
+      get(): any {
         return this.checked;
       },
-      set(checked: RadioChecked) {
+      set(checked: any) {
         this.$emit('change', checked);
       },
     },

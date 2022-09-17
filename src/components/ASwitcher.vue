@@ -9,7 +9,7 @@
     >
     <span class="switcher__control" />
 
-    <span v-if="$slots.default || label" class="switcher__label">
+    <span v-if="$slots.default ?? label" class="switcher__label">
       <slot>{{ label }}</slot>
     </span>
   </label>

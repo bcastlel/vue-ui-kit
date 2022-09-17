@@ -133,7 +133,6 @@ $loader-size: calc(1em + 4px);
 
   &[disabled] {
     opacity: 0.5;
-    pointer-events: none;
   }
 
   &__icon-wrapper {

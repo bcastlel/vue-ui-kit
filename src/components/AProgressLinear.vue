@@ -98,7 +98,7 @@ export default Vue.extend({
   align-items: center;
   position: relative;
   overflow: hidden;
-  transition: color 0.1s linear;
+  transition: color 0.1s;
 
   &__bar {
     position: absolute;
