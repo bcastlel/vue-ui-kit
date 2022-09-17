@@ -1,4 +1,6 @@
-$default-aspect-ratio: 16 / 9;
+@use 'sass:math';
+
+$default-aspect-ratio: math.div(16, 9);
 
 .aspect-ratio {
   display: flex;
@@ -17,7 +19,7 @@ $default-aspect-ratio: 16 / 9;
   // sizer
   &::before {
     content: '';
-    padding-bottom: percentage(1 / $default-aspect-ratio);
+    padding-bottom: percentage(math.div(1, $default-aspect-ratio));
   }
 
   &__content {
