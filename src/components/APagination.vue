@@ -142,9 +142,12 @@ export default Vue.extend({
 <style lang="scss" scoped>
 @import '@/styles/vars';
 
+$item-margin: 12px;
+$item-size: 36px;
+
 .pagination {
-  margin-bottom: -12px;
-  margin-right: -12px;
+  margin-bottom: -#{$item-margin};
+  margin-right: -#{$item-margin};
 
   &_disabled {
     opacity: 0.5;
@@ -153,12 +156,12 @@ export default Vue.extend({
 
   &__arrow,
   &__item {
-    margin-bottom: 12px;
-    margin-right: 12px;
+    margin-bottom: $item-margin;
+    margin-right: $item-margin;
     border-radius: 4px;
     border: 1px solid $mono-lightest;
     padding: 0 6px;
-    height: 36px;
+    height: $item-size;
     vertical-align: bottom;
     color: $primary;
     transition: border-color 0.2s;
@@ -171,7 +174,7 @@ export default Vue.extend({
 
   // stylelint-disable-next-line no-descending-specificity
   &__item {
-    min-width: 36px;
+    min-width: $item-size;
 
     &_active {
       border-color: $secondary;
@@ -189,7 +192,7 @@ export default Vue.extend({
 
   // stylelint-disable-next-line no-descending-specificity
   &__arrow {
-    width: 36px;
+    width: $item-size;
     display: inline-flex;
     align-items: center;
 
