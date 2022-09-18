@@ -2,6 +2,7 @@
   <label class="radio" :class="{ 'radio_disabled': disabled }">
     <input
       v-model="localChecked"
+      v-bind="$attrs"
       class="radio__input"
       type="radio"
       :value="value"
@@ -20,6 +21,7 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'ARadio',
+  inheritAttrs: false,
   model: {
     prop: 'checked',
     event: 'change',
@@ -46,7 +48,10 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+@use 'sass:math';
 @import '@/styles/vars';
+
+$control-size: 20px;
 
 .radio {
   display: inline-flex;
@@ -64,8 +69,8 @@ export default Vue.extend({
   &__control {
     border-radius: 50%;
     border: 2px solid $grey;
-    width: 20px;
-    height: 20px;
+    width: $control-size;
+    height: $control-size;
     flex-shrink: 0;
     position: relative;
     transition: border-color 0.2s;
@@ -74,25 +79,19 @@ export default Vue.extend({
     &::before {
       content: '';
       // in this case translate(-50%, -50%) doesn`t center on all resolutions
-      margin-top: -10px;
-      margin-left: -10px;
+      margin-top: -#{math.div($control-size, 2)};
+      margin-left: -#{math.div($control-size, 2)};
       border-radius: 50%;
-      width: 20px;
-      height: 20px;
+      width: $control-size;
+      height: $control-size;
       position: absolute;
       left: 50%;
       top: 50%;
       transform: scale(0);
       background-color: $secondary;
       will-change: transform;
-      transition: transform 0.2s;
-    }
-  }
-
-  &:hover,
-  &:focus-within {
-    #{$root}__control {
-      border-color: $secondary;
+      transition-property: transform, background-color;
+      transition-duration: 0.2s;
     }
   }
 
@@ -112,6 +111,21 @@ export default Vue.extend({
 
   &__label {
     margin-left: 10px;
+  }
+
+  &:hover,
+  &:focus-within {
+    #{$root}__control {
+      border-color: $secondary;
+    }
+
+    #{$root}__input:checked + #{$root}__control {
+      border-color: $secondary-slightly-darker;
+
+      &::before {
+        background-color: $secondary-slightly-darker;
+      }
+    }
   }
 }
 </style>
