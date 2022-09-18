@@ -1,10 +1,11 @@
 <template>
-  <div class="rating" :class="{ 'rating_readonly': readonly }">
+  <div class="rating">
     <button
       v-for="(button, index) in length"
       :key="index"
       class="rating__button"
       :class="{ 'rating__button_selected': (hoverValue || value) >= button }"
+      :disabled="readonly"
       :aria-label="`Rating ${button} of ${length}`"
       @mouseenter="hoverValue = button"
       @mouseleave="hoverValue = 0"
@@ -16,6 +17,10 @@
         class="rating__button-icon rating__button-icon_half"
       />
     </button>
+
+    <span v-if="$slots.default ?? text" class="rating__text">
+      <slot>{{ text }}</slot>
+    </span>
   </div>
 </template>
 
@@ -43,6 +48,7 @@ export default Vue.extend({
       validator: (value: number) => Number.isInteger(value) && value > 0,
       default: DEFAULT_LENGTH,
     },
+    text: { type: String, default: '' },
     readonly: Boolean,
   },
   data(): Data {
@@ -57,6 +63,9 @@ export default Vue.extend({
 @import '@/styles/vars';
 
 .rating {
+  display: flex;
+  align-items: center;
+
   &__button {
     width: 36px;
     height: 36px;
@@ -80,8 +89,8 @@ export default Vue.extend({
     }
   }
 
-  &_readonly {
-    pointer-events: none;
+  &__text {
+    margin-left: 8px;
   }
 }
 </style>

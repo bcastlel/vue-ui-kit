@@ -2,6 +2,7 @@
   <label class="switcher" :class="{ 'switcher_disabled': disabled }">
     <input
       v-model="localChecked"
+      v-bind="$attrs"
       class="switcher__input"
       type="checkbox"
       :value="value"
@@ -21,6 +22,7 @@ import { CheckboxValue, CheckboxChecked } from '@/models/checkbox';
 
 export default Vue.extend({
   name: 'ASwitcher',
+  inheritAttrs: false,
   model: {
     prop: 'checked',
     event: 'change',
@@ -51,6 +53,9 @@ export default Vue.extend({
 <style lang="scss" scoped>
 @import '@/styles/vars';
 
+$circle-margin: 4px;
+$circle-size: 18px;
+
 .switcher {
   display: inline-flex;
   align-items: center;
@@ -66,8 +71,8 @@ export default Vue.extend({
 
   &__control {
     border-radius: 16px;
-    width: 44px;
-    height: 26px;
+    width: $circle-size * 2 + $circle-margin * 2;
+    height: $circle-size + $circle-margin * 2;
     flex-shrink: 0;
     background-color: $grey;
     transition: background-color 0.2s;
@@ -77,20 +82,13 @@ export default Vue.extend({
     // circle
     &::before {
       content: '';
-      margin-left: 4px;
+      margin-left: $circle-margin;
       border-radius: 50%;
-      width: 18px;
-      height: 18px;
+      width: $circle-size;
+      height: $circle-size;
       background-color: white;
       will-change: transform;
       transition: transform 0.2s;
-    }
-  }
-
-  &:hover,
-  &:focus-within {
-    #{$root}__control {
-      background-color: darken($grey, 7.5%);
     }
   }
 
@@ -110,6 +108,17 @@ export default Vue.extend({
 
   &__label {
     margin-left: 10px;
+  }
+
+  &:hover,
+  &:focus-within {
+    #{$root}__control {
+      background-color: darken($grey, 7.5%);
+    }
+
+    #{$root}__input:checked + #{$root}__control {
+      background-color: $secondary-slightly-darker;
+    }
   }
 }
 </style>

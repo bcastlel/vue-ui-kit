@@ -4,28 +4,39 @@
       <a-radio
         v-model="basicUsageChecked"
         value="first"
+        name="basic-usage"
         label="First"
       />
 
       <a-radio
         v-model="basicUsageChecked"
         value="second"
+        name="basic-usage"
         label="Second"
       />
 
       <a-radio
         v-model="basicUsageChecked"
         value="third"
+        name="basic-usage"
         label="Third"
       />
     </template>
 
     <component-usage-example caption="Label slot">
-      <a-radio v-model="labelSlotChecked" value="left">
+      <a-radio
+        v-model="labelSlotChecked"
+        value="left"
+        name="label-slot"
+      >
         <span class="label-slot-highlighter">Le</span>ft
       </a-radio>
 
-      <a-radio v-model="labelSlotChecked" value="right">
+      <a-radio
+        v-model="labelSlotChecked"
+        value="right"
+        name="label-slot"
+      >
         <span class="label-slot-highlighter">Ri</span>ght
       </a-radio>
     </component-usage-example>

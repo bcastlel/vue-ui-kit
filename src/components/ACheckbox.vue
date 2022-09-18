@@ -8,6 +8,7 @@
   >
     <input
       v-model="localChecked"
+      v-bind="$attrs"
       class="checkbox__input"
       type="checkbox"
       :value="value"
@@ -36,6 +37,7 @@ export default Vue.extend({
     CheckIcon,
     MinusIcon,
   },
+  inheritAttrs: false,
   model: {
     prop: 'checked',
     event: 'change',
@@ -147,8 +149,8 @@ export default Vue.extend({
     }
 
     #{$root}__input:checked + #{$root}__control {
-      border-color: darken($secondary, 7.5%);
-      background-color: darken($secondary, 7.5%);
+      border-color: $secondary-slightly-darker;
+      background-color: $secondary-slightly-darker;
     }
   }
 
