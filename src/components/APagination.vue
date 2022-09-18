@@ -8,7 +8,7 @@
       <button
         class="pagination__arrow"
         type="button"
-        :disabled="value === 1"
+        :disabled="value === 1 || disabled"
         aria-label="Previous page"
         @click="$emit('input', value - 1)"
       >
@@ -27,6 +27,7 @@
           'pagination__item_blank': !page,
         }"
         :type="page ? 'button' : undefined"
+        :disabled="page ? disabled : undefined"
         :aria-label="getItemAriaLabel(page)"
         @click="page ? $emit('input', page) : ''"
       >
@@ -36,7 +37,7 @@
       <button
         class="pagination__arrow"
         type="button"
-        :disabled="value === length"
+        :disabled="value === length || disabled"
         aria-label="Next page"
         @click="$emit('input', value + 1)"
       >

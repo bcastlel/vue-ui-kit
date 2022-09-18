@@ -2,19 +2,19 @@
   <component-page title="Modal">
     <template #basicUsage>
       <a-button @click="basicUsageModalVisible = true">
-        Show Modal
+        Show modal
       </a-button>
     </template>
 
     <component-usage-example caption="Custom transition">
       <a-button @click="customTransitionModalVisible = true">
-        Show Modal
+        Show modal
       </a-button>
     </component-usage-example>
 
     <component-usage-example caption="Hide close button">
       <a-button @click="hideCloseButtonModalVisible = true">
-        Show Modal
+        Show modal
       </a-button>
     </component-usage-example>
 
