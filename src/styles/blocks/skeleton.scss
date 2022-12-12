@@ -1,0 +1,41 @@
+@keyframes translate-x-skeleton {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton {
+  cursor: wait;
+
+  &__item {
+    border-radius: 6px;
+    background-color: $grey-slightly-lighter;
+
+    &_circle {
+      border-radius: 50%;
+    }
+
+    &_square {
+      border-radius: 0;
+    }
+
+    &:not(&_not-animated) {
+      overflow: hidden;
+      position: relative;
+
+      // highlight
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+        animation: translate-x-skeleton 1.4s infinite;
+        background: linear-gradient(to right , transparent, hsla(0, 0%, 100%, 0.3), transparent);
+      }
+    }
+  }
+}
+

@@ -16,6 +16,7 @@ const Rating = () => import(/* webpackChunkName: "views/Rating" */ '@/views/Rati
 const Switcher = () => import(/* webpackChunkName: "views/Switcher" */ '@/views/Switcher.vue');
 const Container = () => import(/* webpackChunkName: "views/Container" */ '@/views/Container.vue');
 const AspectRatio = () => import(/* webpackChunkName: "views/AspectRatio" */ '@/views/AspectRatio.vue');
+const Skeleton = () => import(/* webpackChunkName: "views/Skeleton" */ '@/views/Skeleton.vue');
 /* eslint-enable @typescript-eslint/explicit-function-return-type */
 
 Vue.use(VueRouter);
@@ -90,6 +91,11 @@ const routes: Array<RouteConfig> = [
     path: '/aspect-ratio',
     name: 'aspect-ratio',
     component: AspectRatio,
+  },
+  {
+    path: '/skeleton',
+    name: 'skeleton',
+    component: Skeleton,
   },
 ];
 
