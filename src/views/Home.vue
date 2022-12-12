@@ -106,6 +106,12 @@
                   Aspect ratio
                 </router-link>
               </li>
+
+              <li class="components__item">
+                <router-link :to="{ name: 'skeleton' }">
+                  Skeleton
+                </router-link>
+              </li>
             </ul>
           </div>
         </div>

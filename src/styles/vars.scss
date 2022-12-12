@@ -11,6 +11,7 @@ $secondary-lightest: lighten($secondary, 45%);
 $mono-darker: darken($mono, 15%);
 $mono-lighter: lighten($mono, 15%);
 $mono-lightest: lighten($mono, 45%);
+$grey-slightly-lighter: lighten($grey, 7.5%);
 
 /* Breakpoints */
 $xl-breakpoint: 1199px;
