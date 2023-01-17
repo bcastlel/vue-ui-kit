@@ -82,6 +82,12 @@
               </li>
 
               <li class="components__item">
+                <router-link :to="{ name: 'side-panel' }">
+                  Side panel
+                </router-link>
+              </li>
+
+              <li class="components__item">
                 <router-link :to="{ name: 'switcher' }">
                   Switcher
                 </router-link>

@@ -13,6 +13,7 @@ const ProgressCircular = () => import(/* webpackChunkName: "views/ProgressCircul
 const ProgressLinear = () => import(/* webpackChunkName: "views/ProgressLinear" */ '@/views/ProgressLinear.vue');
 const Radio = () => import(/* webpackChunkName: "views/Radio" */ '@/views/Radio.vue');
 const Rating = () => import(/* webpackChunkName: "views/Rating" */ '@/views/Rating.vue');
+const SidePanel = () => import(/* webpackChunkName: "views/SidePanel" */ '@/views/SidePanel.vue');
 const Switcher = () => import(/* webpackChunkName: "views/Switcher" */ '@/views/Switcher.vue');
 const Container = () => import(/* webpackChunkName: "views/Container" */ '@/views/Container.vue');
 const AspectRatio = () => import(/* webpackChunkName: "views/AspectRatio" */ '@/views/AspectRatio.vue');
@@ -76,6 +77,11 @@ const routes: Array<RouteConfig> = [
     path: '/rating',
     name: 'rating',
     component: Rating,
+  },
+  {
+    path: '/side-panel',
+    name: 'side-panel',
+    component: SidePanel,
   },
   {
     path: '/switcher',
