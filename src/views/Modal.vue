@@ -46,7 +46,7 @@ import ComponentPage from '@/components/page-constructor/ComponentPage.vue';
 import ComponentUsageExample from '@/components/page-constructor/ComponentUsageExample.vue';
 import AButton from '@/components/AButton.vue';
 import AModal from '@/components/AModal.vue';
-import { LOREM_IPSUM } from '@/config';
+import { SHORT_LOREM_IPSUM } from '@/config';
 
 interface Data {
   basicUsageModalVisible: boolean;
@@ -70,8 +70,8 @@ export default Vue.extend({
     };
   },
   computed: {
-    loremIpsum(): typeof LOREM_IPSUM {
-      return LOREM_IPSUM;
+    loremIpsum(): typeof SHORT_LOREM_IPSUM {
+      return SHORT_LOREM_IPSUM;
     },
   },
 });

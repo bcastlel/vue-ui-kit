@@ -37,7 +37,7 @@ import Vue from 'vue';
 import ComponentPage from '@/components/page-constructor/ComponentPage.vue';
 import ComponentUsageExample from '@/components/page-constructor/ComponentUsageExample.vue';
 import AExpansionPanel from '@/components/AExpansionPanel.vue';
-import { LOREM_IPSUM } from '@/config';
+import { SHORT_LOREM_IPSUM } from '@/config';
 
 export default Vue.extend({
   name: 'ExpansionPanel',
@@ -47,8 +47,8 @@ export default Vue.extend({
     AExpansionPanel,
   },
   computed: {
-    loremIpsum(): typeof LOREM_IPSUM {
-      return LOREM_IPSUM;
+    loremIpsum(): typeof SHORT_LOREM_IPSUM {
+      return SHORT_LOREM_IPSUM;
     },
   },
 });
