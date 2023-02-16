@@ -43,17 +43,22 @@
     </component-usage-example>
 
     <component-usage-example caption="Disabled option">
-      <a-checkbox checked disabled>
-        Checked
-      </a-checkbox>
+      <a-checkbox
+        label="Checked"
+        checked
+        disabled
+      />
 
-      <a-checkbox indeterminate disabled>
-        Indeterminate
-      </a-checkbox>
+      <a-checkbox
+        label="Indeterminate"
+        disabled
+        indeterminate
+      />
 
-      <a-checkbox disabled>
-        Unchecked
-      </a-checkbox>
+      <a-checkbox
+        label="Unchecked"
+        disabled
+      />
     </component-usage-example>
   </component-page>
 </template>

@@ -128,12 +128,8 @@ export default Vue.extend({
       border-color: $secondary;
       background-color: $secondary;
 
-      #{$root}__control-icon {
-        opacity: 0;
-
-        &_checked {
-          opacity: 1;
-        }
+      #{$root}__control-icon_checked {
+        opacity: 1;
       }
     }
   }
@@ -155,22 +151,24 @@ export default Vue.extend({
   }
 
   &_indeterminate {
-    #{$root}__input + #{$root}__control {
+    #{$root}__control,
+    #{$root}__input:checked + #{$root}__control {
       border-color: $mono;
       background-color: $mono;
+    }
 
-      #{$root}__control-icon {
-        opacity: 0;
+    #{$root}__control-icon_indeterminate {
+      opacity: 1;
+    }
 
-        &_indeterminate {
-          opacity: 1;
-        }
-      }
+    #{$root}__input:checked + #{$root}__control #{$root}__control-icon_checked {
+      opacity: 0;
     }
 
     &:hover,
     &:focus-within {
-      #{$root}__input + #{$root}__control {
+      #{$root}__control,
+      #{$root}__input:checked + #{$root}__control {
         border-color: darken($mono, 7.5%);
         background-color: darken($mono, 7.5%);
       }
