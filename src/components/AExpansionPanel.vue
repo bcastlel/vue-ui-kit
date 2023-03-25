@@ -7,7 +7,7 @@
       role="button"
       :aria-expanded="contentVisible"
       @click="toggleContentVisible"
-      @keypress.enter.space="toggleContentVisible"
+      @keydown.enter.space="toggleContentVisible"
     >
       <div class="expansion-panel__caption">
         <slot name="caption" :content-visible="contentVisible" />

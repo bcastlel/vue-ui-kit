@@ -88,6 +88,12 @@
               </li>
 
               <li class="components__item">
+                <router-link :to="{ name: 'stepper' }">
+                  Stepper
+                </router-link>
+              </li>
+
+              <li class="components__item">
                 <router-link :to="{ name: 'switcher' }">
                   Switcher
                 </router-link>
