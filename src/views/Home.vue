@@ -98,6 +98,12 @@
                   Switcher
                 </router-link>
               </li>
+
+              <li class="components__item">
+                <router-link :to="{ name: 'uploader' }">
+                  Uploader
+                </router-link>
+              </li>
             </ul>
           </div>
 

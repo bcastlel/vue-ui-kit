@@ -1,25 +1,25 @@
 <template>
   <component-page title="Stepper">
     <template #basicUsage>
-      <a-stepper :items="commonSteps" :active-item-id.sync="basicUsageActiveStepId" />
+      <a-stepper v-model="basicUsageActiveStepId" :items="commonSteps" />
     </template>
 
     <component-usage-example caption="Disabled and filled states">
-      <a-stepper :items="extendedSteps" :active-item-id.sync="disabledAndFilledStatesActiveStepId" />
+      <a-stepper v-model="disabledAndFilledStatesActiveStepId" :items="extendedSteps" />
     </component-usage-example>
 
     <component-usage-example caption="Non linear option">
       <a-stepper
+        v-model="nonLinearActiveStepId"
         :items="commonSteps"
-        :active-item-id.sync="nonLinearActiveStepId"
         non-linear
       />
     </component-usage-example>
 
     <component-usage-example caption="Vertical style">
       <a-stepper
+        v-model="verticalStyleActiveStepId"
         :items="commonSteps"
-        :active-item-id.sync="verticalStyleActiveStepId"
         vertical
       />
     </component-usage-example>
