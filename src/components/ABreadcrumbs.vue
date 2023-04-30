@@ -1,5 +1,5 @@
 <template>
-  <ul class="breadcrumbs">
+  <ol class="breadcrumbs">
     <li
       v-for="(item, index) in items"
       :key="item.text"
@@ -22,7 +22,7 @@
         </slot>
       </div>
     </li>
-  </ul>
+  </ol>
 </template>
 
 <script lang="ts">

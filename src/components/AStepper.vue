@@ -1,11 +1,11 @@
 <template>
-  <ul class="stepper" :class="{ 'stepper_vertical': vertical }">
+  <ol class="stepper" :class="{ 'stepper_vertical': vertical }">
     <li
       v-for="(item, index) in items"
       :key="item.id"
       class="stepper__item"
       :class="{
-        'stepper__item_active': item.id === activeItemId,
+        'stepper__item_active': item.id === value,
         'stepper__item_disabled': isDisabledItem(item, index),
         'stepper__item_filled': item.filled,
       }"
@@ -14,8 +14,8 @@
         class="stepper__item-content"
         :tabindex="isDisabledItem(item, index) ? -1 : 0"
         role="button"
-        @click="$emit('update:activeItemId', item.id)"
-        @keydown.enter="$emit('update:activeItemId', item.id)"
+        @click="$emit('input', item.id)"
+        @keydown.enter="$emit('input', item.id)"
       >
         <div class="stepper__item-number">
           {{ index + 1 }}
@@ -26,7 +26,7 @@
         </div>
       </div>
     </li>
-  </ul>
+  </ol>
 </template>
 
 <script lang="ts">
@@ -37,7 +37,7 @@ export default Vue.extend({
   name: 'AStepper',
   props: {
     items: { type: Array as PropType<Step[]>, required: true },
-    activeItemId: { type: [String, Number], required: true },
+    value: { type: [String, Number], required: true },
     nonLinear: Boolean,
     vertical: Boolean,
   },
@@ -47,7 +47,7 @@ export default Vue.extend({
         .find(({ disabled }) => !disabled);
 
       return item.disabled ?? !(this.nonLinear || previousNonDisabledItem?.filled || item.filled
-        || item.id === this.activeItemId);
+        || item.id === this.value);
     },
   },
 });
