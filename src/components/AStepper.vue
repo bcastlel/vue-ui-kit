@@ -58,6 +58,7 @@ export default Vue.extend({
 
 .stepper {
   display: flex;
+  flex-wrap: wrap;
 
   $root: &;
 
@@ -110,6 +111,7 @@ export default Vue.extend({
     }
 
     &-content {
+      height: 34px;
       user-select: none;
       display: flex;
       align-items: center;

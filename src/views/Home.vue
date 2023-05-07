@@ -100,6 +100,12 @@
               </li>
 
               <li class="components__item">
+                <router-link :to="{ name: 'tabs' }">
+                  Tabs
+                </router-link>
+              </li>
+
+              <li class="components__item">
                 <router-link :to="{ name: 'uploader' }">
                   Uploader
                 </router-link>

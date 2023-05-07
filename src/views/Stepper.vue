@@ -68,10 +68,10 @@ export default Vue.extend({
     };
   },
   computed: {
-    commonSteps(): Step[] {
+    commonSteps(): typeof COMMON_STEPS {
       return COMMON_STEPS;
     },
-    extendedSteps(): Step[] {
+    extendedSteps(): typeof EXTENDED_STEPS {
       return EXTENDED_STEPS;
     },
   },
