@@ -1,25 +1,28 @@
 <template>
-  <ul class="tabs">
-    <li
-      v-for="item in items"
-      :key="item.id"
-      class="tabs__item"
-      :class="{
-        'tabs__item_active': item.id === value,
-        'tabs__item_disabled': item.disabled,
-      }"
-    >
-      <button
-        class="tabs__item-content"
-        :disabled="item.disabled"
-        @click="$emit('input', item.id)"
+  <div class="tabs-wrapper">
+    <ul class="tabs" :class="{ 'tabs_boxed': boxed }">
+      <li
+        v-for="item in items"
+        :key="item.id"
+        class="tab"
+        :class="{
+          'tab_active': item.id === value,
+          'tab_disabled': item.disabled,
+          'tab_boxed': boxed,
+        }"
       >
-        <component :is="item.icon" class="tabs__item-icon" />
+        <button
+          class="tab__content"
+          :disabled="item.disabled"
+          @click="$emit('input', item.id)"
+        >
+          <component :is="item.icon" class="tab__icon" />
 
-        <span class="tabs__item-text">{{ item.text }}</span>
-      </button>
-    </li>
-  </ul>
+          <span class="tab__text">{{ item.text }}</span>
+        </button>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
@@ -31,6 +34,7 @@ export default Vue.extend({
   props: {
     items: { type: Array as PropType<Tab[]>, required: true },
     value: { type: [String, Number], required: true },
+    boxed: Boolean,
   },
 });
 </script>
@@ -42,36 +46,65 @@ export default Vue.extend({
   display: inline-flex;
   flex-wrap: wrap;
 
-  &__item {
-    &-content {
-      border-bottom: 1px solid $mono-lightest;
-      padding: 6px 16px;
-      height: 40px;
-      color: $primary;
-      display: flex;
-      align-items: center;
-      transition-property: border-color, color;
-      transition-duration: 0.2s;
+  &_boxed {
+    margin-bottom: 1px;
+    margin-left: 1px;
+  }
+}
+
+.tab {
+  $root: &;
+
+  &__content {
+    border-bottom: 1px solid $mono-lightest;
+    padding: 6px 16px;
+    height: 40px;
+    color: $primary;
+    display: flex;
+    align-items: center;
+    transition-property: border-color, color, background-color;
+    transition-duration: 0.2s;
+
+    &:hover,
+    &:focus-visible {
+      color: $secondary;
+    }
+  }
+
+  &__icon {
+    margin-right: 6px;
+    width: 24px;
+    fill: currentColor;
+  }
+
+  &_active &__content {
+    border-color: $secondary;
+    color: $secondary;
+  }
+
+  &_disabled &__content {
+    color: $mono-lightest;
+  }
+
+  &_boxed {
+    #{$root}__content {
+      margin-bottom: -1px;
+      margin-left: -1px;
+      border: 1px solid $mono-lightest;
 
       &:hover,
       &:focus-visible {
-        color: $secondary;
+        color: $primary;
+        background-color: rgba($mono-lightest, 0.2);
       }
     }
 
-    &-icon {
-      margin-right: 6px;
-      width: 24px;
-      fill: currentColor;
-    }
-
-    &_active &-content {
-      color: $secondary;
-      border-color: $secondary;
-    }
-
-    &_disabled &-content {
-      color: $mono-lightest;
+    &#{$root}_active #{$root}__content {
+      &:hover,
+      &:focus-visible {
+        color: $secondary;
+        background-color: rgba($secondary, 0.075);
+      }
     }
   }
 }

@@ -3,25 +3,26 @@
     <li
       v-for="(item, index) in items"
       :key="item.id"
-      class="stepper__item"
+      class="step"
       :class="{
-        'stepper__item_active': item.id === value,
-        'stepper__item_disabled': isDisabledItem(item, index),
-        'stepper__item_filled': item.filled,
+        'step_active': item.id === value,
+        'step_disabled': isDisabledItem(item, index),
+        'step_filled': item.filled,
+        'step_vertical': vertical,
       }"
     >
       <div
-        class="stepper__item-content"
+        class="step__content"
         :tabindex="isDisabledItem(item, index) ? -1 : 0"
         role="button"
         @click="$emit('input', item.id)"
         @keydown.enter="$emit('input', item.id)"
       >
-        <div class="stepper__item-number">
+        <div class="step__number">
           {{ index + 1 }}
         </div>
 
-        <div class="stepper__item-text">
+        <div class="step__text">
           {{ item.text }}
         </div>
       </div>
@@ -60,100 +61,96 @@ export default Vue.extend({
   display: flex;
   flex-wrap: wrap;
 
+  &_vertical {
+    flex-direction: column;
+  }
+}
+
+.step {
+  display: flex;
+  align-items: center;
+
   $root: &;
 
-  &__item {
+  &:not(:last-child)::after {
+    content: '';
+    margin-left: 12px;
+    margin-right: 12px;
+    width: 27px;
+    flex-shrink: 0;
+    height: 1px;
+    background-color: $mono-lightest;
+  }
+
+  &__number {
+    margin-right: 9px;
+    border-radius: 50%;
+    border: 2px solid $mono-lightest;
+    width: 27px;
+    flex-shrink: 0;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.2s, color 0.1s, background-color 0.2s;
+  }
+
+  &__text {
+    transition: color 0.1s;
+  }
+
+  &_active &__number {
+    border-color: $secondary;
+  }
+
+  &_disabled {
+    #{$root}__content {
+      pointer-events: none;
+    }
+
+    #{$root}__number,
+    #{$root}__text {
+      color: $mono-lightest;
+    }
+  }
+
+  &__content {
+    height: 34px;
+    user-select: none;
     display: flex;
     align-items: center;
 
-    $self: &;
-
-    &:not(:last-child)::after {
-      content: '';
-      margin-left: 12px;
-      margin-right: 12px;
-      width: 27px;
-      flex-shrink: 0;
-      height: 1px;
-      background-color: $mono-lightest;
-    }
-
-    &-number {
-      margin-right: 9px;
-      border-radius: 50%;
-      border: 2px solid $mono-lightest;
-      width: 27px;
-      flex-shrink: 0;
-      height: 27px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: border-color 0.2s, color 0.1s, background-color 0.2s;
-    }
-
-    &-text {
-      transition: color 0.1s;
-    }
-
-    &_active &-number {
-      border-color: $secondary;
-    }
-
-    &_disabled {
-      #{$self}-content {
-        pointer-events: none;
-      }
-
-      #{$self}-number,
-      #{$self}-text {
-        color: $mono-lightest;
-      }
-    }
-
-    &-content {
-      height: 34px;
-      user-select: none;
-      display: flex;
-      align-items: center;
-
-      &:hover,
-      &:focus-visible {
-        #{$root}__item-text {
-          color: $secondary;
-        }
-      }
-    }
-
-    &_filled {
-      #{$self}-number {
-        background-color: $mono-lightest;
-      }
-
-      &#{$self}_active #{$self}-number,
-      &#{$self}_disabled #{$self}-number {
-        color: white;
-      }
-
-      &#{$self}_active #{$self}-number {
-        background-color: $secondary;
+    &:hover,
+    &:focus-visible {
+      #{$root}__text {
+        color: $secondary;
       }
     }
   }
 
-  &_vertical {
-    &,
-    #{$root}__item {
-      flex-direction: column;
+  &_filled {
+    #{$root}__number {
+      background-color: $mono-lightest;
     }
 
-    #{$root}__item {
-      align-items: flex-start;
+    &#{$root}_active #{$root}__number,
+    &#{$root}_disabled #{$root}__number {
+      color: white;
+    }
 
-      &:not(:last-child)::after {
-        margin: 12px 0 12px 13px;
-        width: 1px;
-        height: 27px;
-      }
+    &#{$root}_active #{$root}__number {
+      background-color: $secondary;
+    }
+  }
+
+  &_vertical {
+    flex-direction: column;
+    align-items: flex-start;
+
+    &:not(:last-child)::after {
+      margin: 12px 0 12px 13px;
+      width: 1px;
+      height: 27px;
     }
   }
 }

@@ -1,6 +1,6 @@
 import { RawLocation } from 'vue-router';
 
-export interface BreadcrumbsItem {
+export interface Breadcrumb {
   text: string;
   to?: RawLocation;
   href?: string;

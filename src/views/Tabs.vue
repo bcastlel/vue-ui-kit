@@ -1,8 +1,16 @@
 <template>
   <component-page title="Tabs">
     <template #basicUsage>
-      <a-tabs v-model="basicUsageActiveTabId" :items="basicUsageTabs" />
+      <a-tabs v-model="basicUsageActiveTabId" :items="commonTabs" />
     </template>
+
+    <component-usage-example caption="Boxed style">
+      <a-tabs
+        v-model="boxedStyleActiveTabId"
+        :items="commonTabs"
+        boxed
+      />
+    </component-usage-example>
 
     <component-usage-example caption="Icon option">
       <a-tabs v-model="iconOptionActiveTabId" :items="iconOptionTabs" />
@@ -23,7 +31,7 @@ import AccountCircleIcon from '@/assets/account-circle.svg';
 import CogIcon from '@/assets/cog.svg';
 import { Tab } from '@/models/tabs';
 
-const BASIC_USAGE_TABS: Tab[] = [
+const COMMON_TABS: Tab[] = [
   { id: 'user', text: 'User' },
   { id: 'config', text: 'Config' },
   { id: 'tasks', text: 'Tasks' },
@@ -43,6 +51,7 @@ const DISABLED_STATE_TABS: Tab[] = [
 
 interface Data {
   basicUsageActiveTabId: Tab['id'];
+  boxedStyleActiveTabId: Tab['id'];
   iconOptionActiveTabId: Tab['id'];
   disabledStateActiveTabId: Tab['id'];
 }
@@ -56,14 +65,15 @@ export default Vue.extend({
   },
   data(): Data {
     return {
-      basicUsageActiveTabId: BASIC_USAGE_TABS[0].id,
+      basicUsageActiveTabId: COMMON_TABS[0].id,
+      boxedStyleActiveTabId: COMMON_TABS[0].id,
       iconOptionActiveTabId: ICON_OPTION_TABS[0].id,
       disabledStateActiveTabId: DISABLED_STATE_TABS[0].id,
     };
   },
   computed: {
-    basicUsageTabs(): typeof BASIC_USAGE_TABS {
-      return BASIC_USAGE_TABS;
+    commonTabs(): typeof COMMON_TABS {
+      return COMMON_TABS;
     },
     iconOptionTabs(): typeof ICON_OPTION_TABS {
       return ICON_OPTION_TABS;
