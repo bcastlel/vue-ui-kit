@@ -46,6 +46,11 @@ import ABreadcrumbs from '@/components/ABreadcrumbs.vue';
 import { BreadcrumbsItem } from '@/models/breadcrumbs';
 import ChevronDoubleRightIcon from '@/assets/chevron-double-right.svg';
 
+const COMMON_BREADCRUMBS: BreadcrumbsItem[] = [
+  { text: 'Home', to: { name: 'home' } },
+  { text: 'Breadcrumbs', to: { name: 'breadcrumbs' } },
+];
+
 export default Vue.extend({
   name: 'Breadcrumbs',
   components: {
@@ -55,11 +60,8 @@ export default Vue.extend({
     ChevronDoubleRightIcon,
   },
   computed: {
-    commonBreadcrumbs(): BreadcrumbsItem[] {
-      return [
-        { text: 'Home', to: { name: 'home' } },
-        { text: 'Breadcrumbs', to: { name: 'breadcrumbs' } },
-      ];
+    commonBreadcrumbs(): typeof COMMON_BREADCRUMBS {
+      return COMMON_BREADCRUMBS;
     },
   },
 });

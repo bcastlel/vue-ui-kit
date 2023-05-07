@@ -16,6 +16,7 @@ const Rating = () => import(/* webpackChunkName: "views/Rating" */ '@/views/Rati
 const SidePanel = () => import(/* webpackChunkName: "views/SidePanel" */ '@/views/SidePanel.vue');
 const Stepper = () => import(/* webpackChunkName: "views/Stepper" */ '@/views/Stepper.vue');
 const Switcher = () => import(/* webpackChunkName: "views/Switcher" */ '@/views/Switcher.vue');
+const Tabs = () => import(/* webpackChunkName: "views/Tabs" */ '@/views/Tabs.vue');
 const Uploader = () => import(/* webpackChunkName: "views/Uploader" */ '@/views/Uploader.vue');
 const Container = () => import(/* webpackChunkName: "views/Container" */ '@/views/Container.vue');
 const AspectRatio = () => import(/* webpackChunkName: "views/AspectRatio" */ '@/views/AspectRatio.vue');
@@ -94,6 +95,11 @@ const routes: Array<RouteConfig> = [
     path: '/switcher',
     name: 'switcher',
     component: Switcher,
+  },
+  {
+    path: '/tabs',
+    name: 'tabs',
+    component: Tabs,
   },
   {
     path: '/uploader',
