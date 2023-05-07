@@ -43,10 +43,10 @@ import Vue from 'vue';
 import ComponentPage from '@/components/page-constructor/ComponentPage.vue';
 import ComponentUsageExample from '@/components/page-constructor/ComponentUsageExample.vue';
 import ABreadcrumbs from '@/components/ABreadcrumbs.vue';
-import { BreadcrumbsItem } from '@/models/breadcrumbs';
+import { Breadcrumb } from '@/models/breadcrumbs';
 import ChevronDoubleRightIcon from '@/assets/chevron-double-right.svg';
 
-const COMMON_BREADCRUMBS: BreadcrumbsItem[] = [
+const COMMON_BREADCRUMBS: Breadcrumb[] = [
   { text: 'Home', to: { name: 'home' } },
   { text: 'Breadcrumbs', to: { name: 'breadcrumbs' } },
 ];

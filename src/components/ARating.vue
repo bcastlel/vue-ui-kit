@@ -3,18 +3,18 @@
     <button
       v-for="(button, index) in length"
       :key="index"
-      class="rating__button"
-      :class="{ 'rating__button_selected': (hoverValue || value) >= button }"
+      class="star-button"
+      :class="{ 'star-button_selected': (hoverValue || value) >= button }"
       :disabled="readonly"
       :aria-label="`Rating ${button} of ${length}`"
       @mouseenter="hoverValue = button"
       @mouseleave="hoverValue = 0"
       @click="$emit('input', button)"
     >
-      <star-icon class="rating__button-icon" />
+      <star-icon class="star-button__icon" />
       <star-half-icon
         v-if="readonly && value > button - 1 && value < button"
-        class="rating__button-icon rating__button-icon_half"
+        class="star-button__icon star-button__icon_half"
       />
     </button>
 
@@ -66,31 +66,31 @@ export default Vue.extend({
   display: flex;
   align-items: center;
 
-  &__button {
-    width: 36px;
-    height: 36px;
-    position: relative;
+  &__text {
+    margin-left: 8px;
+  }
+}
 
-    &-icon {
-      width: 100%;
-      max-height: 100%;
-      fill: $grey;
-      transition: fill 0.1s;
+.star-button {
+  width: 36px;
+  height: 36px;
+  position: relative;
 
-      &_half {
-        position: absolute;
-        left: 0;
-        fill: $secondary;
-      }
-    }
+  &__icon {
+    width: 100%;
+    max-height: 100%;
+    fill: $grey;
+    transition: fill 0.1s;
 
-    &_selected &-icon {
+    &_half {
+      position: absolute;
+      left: 0;
       fill: $secondary;
     }
   }
 
-  &__text {
-    margin-left: 8px;
+  &_selected &__icon {
+    fill: $secondary;
   }
 }
 </style>
