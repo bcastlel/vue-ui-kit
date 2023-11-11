@@ -5,6 +5,7 @@
         <div class="head__body">
           <button
             class="head__back"
+            aria-label="Back"
             @click="$previousRoute.name ? $router.back() : $router.push({ name: 'home' })"
           >
             <arrow-left-icon />
