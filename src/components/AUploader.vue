@@ -6,6 +6,7 @@
     @dragleave="onDragleave"
   >
     <input
+      :id="id"
       class="uploader__file"
       type="file"
       :accept="accept"
@@ -17,23 +18,26 @@
 
     <component :is="iconComponent" class="uploader__icon" />
 
-    <p class="uploader__text">
+    <label class="uploader__label" :for="id">
       <template v-if="fileNames">
         {{ fileNames }}
       </template>
       <slot v-else>
         Drop your file{{ isMultiple ? 's' : '' }} here
-        or <span class="uploader__text-highlighter">click to upload</span>
+        or <span class="uploader__label-highlighter">click to upload</span>
       </slot>
-    </p>
+    </label>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue';
+import { uniqueId } from 'lodash';
 import FileUploadOutline from '@/assets/file-upload-outline.svg';
 import FileOutline from '@/assets/file-outline.svg';
 import { isFileTypeCompatible } from '@/utils/is-file-type-compatible';
+
+const INPUT_ID_PREFIX = 'uploader-input-';
 
 interface Data {
   isHoveredByDragging: boolean;
@@ -56,6 +60,9 @@ export default Vue.extend({
     };
   },
   computed: {
+    id(): string {
+      return uniqueId(INPUT_ID_PREFIX);
+    },
     isMultiple(): boolean {
       return Array.isArray(this.value);
     },
@@ -157,7 +164,7 @@ export default Vue.extend({
     fill: $mono;
   }
 
-  &__text {
+  &__label {
     width: 100%;
     white-space: nowrap;
     overflow: hidden;

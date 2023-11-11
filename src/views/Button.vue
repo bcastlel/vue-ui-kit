@@ -91,7 +91,7 @@
     </component-usage-example>
 
     <component-usage-example caption="Icon-only style">
-      <a-button>
+      <a-button aria-label="Check">
         <template #icon>
           <check-icon />
         </template>
