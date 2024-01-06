@@ -4,6 +4,7 @@
     v-bind="mergedAttrs"
     class="button"
     :class="classes"
+    :tabindex="loading ? -1 : 0"
     @click="$emit('click')"
   >
     <span v-if="$slots.icon" class="button__icon-wrapper">

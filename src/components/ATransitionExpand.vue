@@ -29,7 +29,7 @@ export default Vue.extend({
 
           void getComputedStyle(element); // force reflow
 
-          requestAnimationFrame(() => element.style.height = height);
+          setTimeout(() => requestAnimationFrame(() => element.style.height = height));
         },
         afterEnter(element: HTMLElement): void {
           element.style.height = 'auto';
@@ -41,7 +41,7 @@ export default Vue.extend({
 
           void getComputedStyle(element); // force reflow
 
-          requestAnimationFrame(() => element.style.height = '0');
+          setTimeout(() => requestAnimationFrame(() => element.style.height = '0'));
         },
       },
     };
